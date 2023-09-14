@@ -8,3 +8,9 @@ def index(request):
 
     # Page from the theme
     return render(request, 'pages/index.html')
+
+
+def sobre(request):
+
+    # Page from the theme
+    return render(request, 'pages/about.html')
