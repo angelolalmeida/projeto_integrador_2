@@ -23,17 +23,20 @@ Open-source **[Django Template](https://www.creative-tim.com/templates/django)**
 
 ## Table of Contents
 
-* [Versions](#versions)
-* [Demo](#demo)
-* [Quick Start](#quick-start)
-* [Documentation](#documentation)
-* [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
+- [Soft UI Dashboard Django ](#soft-ui-dashboard-django-)
+  - [Table of Contents](#table-of-contents)
+  - [Demo](#demo)
+  - [Quick start](#quick-start)
+  - [Documentation](#documentation)
+  - [Codebase structure](#codebase-structure)
+  - [How to Customize](#how-to-customize)
+  - [Deploy on Render](#deploy-on-render)
+  - [Reporting Issues](#reporting-issues)
+  - [Technical Support or Questions](#technical-support-or-questions)
+  - [Licensing](#licensing)
+  - [Useful Links](#useful-links)
+  - [Social Media](#social-media)
+  - [PRO Version](#pro-version)
 
 <br />
 
