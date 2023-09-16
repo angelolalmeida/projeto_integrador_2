@@ -1,30 +1,65 @@
 {% load static %}
-
-<div class="row justify-content-center text-center mt-4">
+<div class="row justify-content-center text-center mt-4" id="count-stats">
     <div class="col-md-3">
-        <h1 class=" text-primary">+ <span id="state2" countTo="3400">0</span></h1>
-      <h5 class="text-primary">Toneladas</h5>
-      <p>de lixo recolhidas e recicladas</p>
+        <h1 class=" text-primary">
+            + <span id="state1" countTo="99">1</span>
+        </h1>
+        <h5 class="text-primary">toneladas</h5>
+        <p>de lixo recolhidas e recicladas</p>
     </div>
     <div class="col-md-3">
-      <h1 class="text-primary">+ <span id="state2" countTo="3400">0</span></h1>
-      <h5 class="text-primary">Pessoas</h5>
-      <p>impactadas diretamente pelo projeto</p>
+        <h1 class="text-primary">
+            + <span id="state2" countTo="18000">1</span>
+        </h1>
+        <h5 class="text-primary">pessoas</h5>
+        <p>impactadas pelo projeto</p>
     </div>
-    
-  </div>
+</div>
+<script src="{% static 'publico/js/CountUp.js' %}"></script>
+<script>
+    // get the element to animate
+    var element = document.getElementById('count-stats');
+    var elementHeight = element.clientHeight;
 
-  <script>
+
+    // listen for scroll event and call animate function
+
+    document.addEventListener('scroll', animate);
+
+    // check if element is in view
+    function inView() {
+        // get window height
+        var windowHeight = window.innerHeight;
+        // get number of pixels that the document is scrolled
+        var scrollY = window.scrollY || window.pageYOffset;
+        // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+        var scrollPosition = scrollY + windowHeight;
+        // get element position (distance from the top of the page to the bottom of the element)
+        var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+  
+        // is scroll position greater than element position? (is element in view?)
+        if (scrollPosition > elementPosition) {
+          return true;
+        }
+  
+        return false;
+      }
 
     var animateComplete = true;
     // animate element when it is in view
     function animate() {
 
+        const options = {
+                separator: '.',
+                decimal: ',',
+            };
+            
+
       // is element in view?
       if (inView()) {
         if (animateComplete) {
           if (document.getElementById('state1')) {
-            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"), options);
             if (!countUp.error) {
               countUp.start();
             } else {
@@ -32,7 +67,7 @@
             }
           }
           if (document.getElementById('state2')) {
-            const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+            const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"), options);
             if (!countUp1.error) {
               countUp1.start();
             } else {
@@ -40,7 +75,7 @@
             }
           }
           if (document.getElementById('state3')) {
-            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"),options);
             if (!countUp2.error) {
               countUp2.start();
             } else {
@@ -53,4 +88,4 @@
     }
 
 
-  </script>
+</script>
