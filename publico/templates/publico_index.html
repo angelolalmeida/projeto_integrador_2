@@ -1,0 +1,11 @@
+{% extends "layouts/base-publico.html" %}
+{% load i18n static admin_soft %}
+{% block content %}
+    <main class="main-content">
+        <section>
+             {% include "includes/publico_header.html" %} 
+             {% include "includes/publico_numeros.html" %} 
+        </section>
+    </main>
+    {% include "includes/footer-fullscreen.html" %}
+{% endblock content %}
