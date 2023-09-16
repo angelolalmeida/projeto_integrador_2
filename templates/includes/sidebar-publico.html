@@ -1,0 +1,70 @@
+{% load i18n static admin_soft %}
+{% include "includes/navigation-publico.html" %}
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+       id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+       aria-hidden="true"
+       id="iconSidenav"></i>
+    <a class="navbar-brand m-0" href="{% url 'admin:index' %}">
+      <img src="{% static 'img/logo-ct-dark.png' %}"
+           class="navbar-brand-img h-100"
+           alt="main_logo">
+      <span class="ms-1 font-weight-bold">Projeto Lixo Rico</span>
+    </a>
+  </div>
+  <hr class="horizontal dark mt-0">
+  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item shadow border-radius-md mt-2">
+        <a href="{% url 'index' %}"
+           class="nav-link {% if 'index' in segment %}active{% endif %}">
+          <div class="icon text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-home text-primary"></i>
+          </div>
+          <span class="nav-link-text ms-1">Início</span>
+        </a>
+      </li>
+      <li class="nav-item shadow-md border-radius-md mt-2">
+        <a href="{% url 'index' %}"
+           class="nav-link {% if 'index' in segment %}active{% endif %}">
+          <div class="icon text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-chart-line text-primary"></i>
+          </div>
+          <span class="nav-link-text ms-1">Nossos Números</span>
+        </a>
+      </li>
+
+      <li class="nav-item shadow-md border-radius-md mt-2">
+        <a href="{% url 'index' %}"
+           class="nav-link {% if 'index' in segment %}active{% endif %}">
+          <div class="icon text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-recycle text-primary"></i>
+          </div>
+          <span class="nav-link-text ms-1">Participe</span>
+        </a>
+      </li>
+
+      <li class="nav-item shadow-md border-radius-md mt-2">
+        <a href="{% url 'index' %}"
+           class="nav-link {% if 'index' in segment %}active{% endif %}">
+          <div class="icon text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-phone text-primary"></i>
+          </div>
+          <span class="nav-link-text ms-1">Fale com a gente</span>
+        </a>
+      </li>
+
+      <li class="nav-item shadow-md border-radius-md mt-2">
+        <a href="{% url 'index' %}"
+           class="nav-link {% if 'index' in segment %}active{% endif %}">
+          <div class="icon text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fas fa-users text-primary"></i>
+          </div>
+          <span class="nav-link-text ms-1">Sobre o projeto</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</aside>

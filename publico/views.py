@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+# from django.http import HttpResponse
 
 # Create your views here.
 
@@ -7,7 +7,7 @@ from django.http import HttpResponse
 def index(request):
 
     # Page from the theme
-    return render(request, 'pages/index.html')
+    return render(request, 'publico_index.html')
 
 
 def sobre(request):
