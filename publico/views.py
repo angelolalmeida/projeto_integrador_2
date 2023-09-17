@@ -13,4 +13,4 @@ def index(request):
 def sobre(request):
 
     # Page from the theme
-    return render(request, 'pages/about.html')
+    return render(request, 'publico_sobre.html')
