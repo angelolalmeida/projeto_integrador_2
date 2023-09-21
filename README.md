@@ -54,7 +54,7 @@ Open-source **[Django Template](https://www.creative-tim.com/templates/django)**
 
 ```bash
 $ git clone https://github.com/angelolalmeida/projeto_integrador_2.git
-$ cd soft-ui-dashboard-django
+$ cd projeto_integrador_2
 ```
 
 <br />
