@@ -3,6 +3,35 @@
 
 {% block content %}
 
-<h1>Formulário de Reclamações</h1>
+<div class="container">
+    <h1>Formulário de Reclamações</h1>
+    <form action="{% url 'reclamacaoes_formulario' %}" method='POST'>{% csrf_token %}
+        <select name='tipo_reclamacao'>
+            <option value=''>Selecione o tipo de reclamação</option>
+            {% for tipo in tipos_reclamacao %}
+                <option value='{{ tipo }}'>{{ tipo }}</option>
+            {% endfor %}
+        </select>
+        <textarea name='observacao' placeholder='Digite a observação'></textarea>
+        <br>
+        <input type='text' name='cep' placeholder='Digite o cep (apenas números)'>
+        <br>
+        <input type='text' name='rua' placeholder='Digite a rua'>
+        <br>
+        <input type='text' name='bairro' placeholder='Digite o bairro'>
+        <br>
+        <input type='text' name='numero_casa' placeholder='Digite o número da casa'>
+        <br>
+        <input type='text' name='complemento' placeholder='Digite o complemento (opcional)'>
+        <br>
+        <input type='text' name='referencia' placeholder='Digite a referência (opcional)'>
+        <br>
+        <input type='text' name='telefone' placeholder='Digite o telefone (opcional)'>
+        <br>
+        <input type='submit' value='Enviar'>
+    </form>
+    </div>
+
+
 
 {% endblock content %}

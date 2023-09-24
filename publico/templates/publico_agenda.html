@@ -1,0 +1,197 @@
+{% extends "layouts/base-publico.html" %}
+{% load i18n static admin_soft %}
+{% block content %}
+    <main class="main-content">
+        <section>
+            <div class="container mt-4">
+                <h1>Agenda Semanal de Coleta</h1>
+                <div class="">
+                    <img class="img-fluid w-100"
+                         src="{% static 'publico/img/mapa_lixo_rico.png' %}"
+                         alt="Mapa da Cidade Com as Regiões e os dias de coleta">
+                </div>
+                <p>Confira os dias que a gente passa no seu bairro:</p>
+                <div class="accordion m-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="heading{{ regiao.id }}">
+                            <h2 class="mb-0">Segunda-feira</h2>
+                        </div>
+                        <div id="collapse-01"
+                             class="collapse show"
+                             aria-labelledby="heading-01"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Jd Veneza I e II</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jd Panorama</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Distrito Industrial</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vale Verde</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bela Vista I</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion m-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="heading{{ regiao.id }}">
+                            <h2 class="mb-0">Terça-Feira</h2>
+                        </div>
+                        <div id="collapse-01"
+                             class="collapse show"
+                             aria-labelledby="heading-01"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Bela Vista II</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Centro</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Santa Clara</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Santa Ana</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zé Macatuba</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion m-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="heading{{ regiao.id }}">
+                            <h2 class="mb-0">Quarta-Feira</h2>
+                        </div>
+                        <div id="collapse-01"
+                             class="collapse show"
+                             aria-labelledby="heading-01"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Usina São José</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion m-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="heading{{ regiao.id }}">
+                            <h2 class="mb-0">Quinta-Feira</h2>
+                        </div>
+                        <div id="collapse-01"
+                             class="collapse show"
+                             aria-labelledby="heading-01"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Jd Capri</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vila Santa Rita</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jardim Europa</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Macatuba VII</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion m-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="heading{{ regiao.id }}">
+                            <h2 class="mb-0">Sexta-Feira</h2>
+                        </div>
+                        <div id="collapse-01"
+                             class="collapse show"
+                             aria-labelledby="heading-01"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Jd Bocayuva</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jd Amércica</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Santa Felicidade</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Santo Antônio</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Vila do Saber</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Jd Planalto</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Bem-viver</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    {% include "includes/footer-fullscreen.html" %}
+{% endblock content %}
