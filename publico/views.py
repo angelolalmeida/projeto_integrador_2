@@ -6,11 +6,14 @@ from django.shortcuts import render
 
 def index(request):
 
-    # Page from the theme
     return render(request, 'publico_index.html')
 
 
 def sobre(request):
 
-    # Page from the theme
     return render(request, 'publico_sobre.html')
+
+
+def agenda(request):
+
+    return render(request, 'publico_agenda.html')
