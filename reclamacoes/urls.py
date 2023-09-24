@@ -1,9 +1,9 @@
 from django.urls import path
-
+from .views import ReclamacoesListView
 from . import views
 
 urlpatterns = [
-    path('', views.reclamacoes_lista, name='recla_lista'),
+    path('', ReclamacoesListView.as_view(), name='reclamacoes_lista'),
     path('formulario/', views.reclamacoes_formulario,
          name='reclamacaoes_formulario'),
 ]
