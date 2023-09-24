@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Formulário de Moradores</h1>
+<form action="{% url 'moradores_formulario' %}" method='POST'>{% csrf_token %}
+    <input type='text' name='nome' placeholder='Digite o nome'>
+    <br>
+    <input type='text' name='cep' placeholder='Digite o cep (apenas números)'>
+    <br>
+    <input type='text' name='endereco' placeholder='Digite o endereço'>
+    <br>
+    <input type='text' name='numero_endereco' placeholder='Digite o número do endereço'>
+    <br>
+    <input type='text' name='whatsapp' placeholder='Digite o número do whatsapp'>
+    <br>
+    <input type='submit' value='Enviar'>
+</form>
+</div>
+{% endblock content %}

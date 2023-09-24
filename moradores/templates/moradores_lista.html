@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class='row'>
+    <div class='col-8'>
+        <h1>Lista de moradores</h1>
+    </div>
+    <div class='col-4'>
+        <a class="btn btn-info" href="{% url 'moradores_formulario' %}">Novo Morador</a>
+    </div>
+</div>
+
+
+<div class='container'>
+    <table class='table table-bordered table-striped'>
+        <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Bairro</th>
+            <th>Whatsapp</th>
+        </tr>
+        {% for morador in moradores %}
+        <tr>
+            <td>{{ morador.nome }}</td>
+            <td>{{ morador.endereco }}, {{ morador.numero_endereco }}, {{ morador.cep }}</td>
+            <td>{{ morador.bairro }}</td>
+            <td>{{ morador.whatsapp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% comment %} {% for bairro in bairros %}
+só um teste para ver se tá salvando os bairros na tabela
+    {{ bairro.bairro }}
+    <br>
+    {{ bairro.cep }}
+
+{% endfor %} {% endcomment %}
+
+{% endblock content %}
