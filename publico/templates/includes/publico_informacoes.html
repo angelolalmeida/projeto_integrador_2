@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-lg-4 mb-lg-0 mb-4">
-                    <a href="javascript:;" class="">
+                    <a href="{% url 'agenda' %}" class="">
                         <div class="card m-2">
                             <div class="card-header p-0 position-relative z-index-1">
                                 <img src="{% static 'publico/img/agenda-coleta.jpg' %}"
@@ -16,7 +16,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Agenda semanal de coleta</h5>
                                 <p class="card-text">Veja em qual dia a gente passa no seu bairro</p>
-                                <a href="#" class="btn btn-primary">Ver agenda</a>
+                                <a href="{% url 'agenda' %}" class="btn btn-primary">Ver agenda</a>
                             </div>
                         </div>
                     </a>
