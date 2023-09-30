@@ -34,6 +34,9 @@
 
     document.addEventListener('scroll', animate);
 
+    // load count animate on load
+    document.addEventListener('DOMContentLoaded', animate);
+
     // check if element is in view
     function inView() {
         // get window height
@@ -43,7 +46,8 @@
         // get current scroll position (distance from the top of the page to the bottom of the current viewport)
         var scrollPosition = scrollY + windowHeight;
         // get element position (distance from the top of the page to the bottom of the element)
-        var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+        // var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+        var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight-200;
   
         // is scroll position greater than element position? (is element in view?)
         if (scrollPosition > elementPosition) {
