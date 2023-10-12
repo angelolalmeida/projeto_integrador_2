@@ -4,7 +4,7 @@
 {% get_direction as direction %}
 {% get_admin_setting as admin_setting %}
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<html lang="{{ LANGUAGE_CODE|default:"pt-br" }}">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>
@@ -29,6 +29,9 @@
             crossorigin="anonymous"></script>
     <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
     <!-- CSS Files -->
+    <link id="css_personalizado"
+          href="{% static 'publico/css/publico.css' %}"
+          rel="stylesheet" />
     <link id="pagestyle"
           href="{% static 'css/soft-ui-dashboard.css' %}"
           rel="stylesheet" />
