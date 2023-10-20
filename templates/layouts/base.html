@@ -5,16 +5,17 @@
 {% get_admin_setting as admin_setting %}
 
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<html lang="{{ LANGUAGE_CODE|default:"pt-br" }}" description="Lixo Rico Macatuba">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>
-     Lixo Rico Macatuba - {% block title %}{% endblock %}
+     Lixo Rico Macatuba - {% block title %}{% endblock title %}
     </title>
 
     <!-- Favicon -->
     <meta charset="utf-8" />
+    <meta description="Lixo Rico Macatuba" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
@@ -43,10 +44,8 @@
         {% block content %}{% endblock content %}
     </main>
     
-
 <!--   Core JS Files   -->
-{% include 'includes/scripts.html' %}
-
+{% include "includes/scripts.html" %}
 
 {% block scripts %}{% endblock scripts %}
 
@@ -60,8 +59,6 @@
     }
 </script>
 
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
 <script src="{% static 'js/scripts.js' %}"></script>
