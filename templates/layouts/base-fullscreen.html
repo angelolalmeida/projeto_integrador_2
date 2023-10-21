@@ -14,44 +14,53 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
-
-  <title>
-    Lixo Rico Macatuba - {% block title %}{% endblock %} | AppSeed
-  </title>
-
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
-  <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="{% static 'css/soft-ui-dashboard.css' %}" rel="stylesheet" />
-  <link id="pagestyle_dark" href="{% static 'css/dark-theme-core.css' %}" rel="stylesheet" />
-
-  <!-- Specific CSS goes HERE -->
-  {% block stylesheets %}{% endblock stylesheets %}
-
-</head>
-<body class="">
-
-  {% block content %}{% endblock content %}
-
-  {% include "includes/scripts.html" %}
-
-  <!-- Specific JS goes HERE --> 
-  {% block scripts %}{% endblock scripts %}
-
-  <script>
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="O Projeto Lixo Rico é um projeto de reciclagem realizado pela Associação dos Catadores de Recicláveis de Macatuba em parceria com a Prefeitura Municipal. Nosso objetivo é realizar a coleta seletiva no município e gerar renda para os associados.">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon"
+          sizes="76x76"
+          href="{% static 'img/apple-icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <title>
+      Lixo Rico Macatuba -
+      {% block title %}{% endblock title %}
+    
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+          rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js"
+            crossorigin="anonymous"></script>
+    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="css_personalizado"
+          href="{% static 'publico/css/publico.css' %}"
+          rel="stylesheet" />
+    <link id="pagestyle"
+          href="{% static 'css/soft-ui-dashboard.css' %}"
+          rel="stylesheet" />
+    <link id="pagestyle_dark"
+          href="{% static 'css/dark-theme-core.css' %}"
+          rel="stylesheet" />
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}
+    {% endblock stylesheets %}
+  </head>
+  <body>
+    {% block content %}
+    {% endblock content %}
+    {% include "includes/scripts.html" %}
+    <!-- Specific JS goes HERE -->
+    {% block scripts %}
+    {% endblock scripts %}
+    <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {
@@ -59,12 +68,10 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
-  </script>
-
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
-
-</body>
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'js/soft-ui-dashboard.min.js' %}"></script>
+  </body>
 </html>
