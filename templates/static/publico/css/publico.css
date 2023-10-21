@@ -94,6 +94,15 @@
     color: #1b512d !important;
 }
 
+.text-principal {
+    color: var(--primary) !important;
+}
+
+.text-primary {
+    color: #04C56B !important;
+}
+
+
 .btn-primary {
     background-color: #1b512d !important;
 }
@@ -102,7 +111,21 @@
     background-color: #0d6efd !important;
 }
 
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+    display: block;
+    overflow: auto;
+    height: auto !important;
+    
+  }
 
+.sidebar-background {
+    background-color: #e6e6e6;
+    color: #1b512d;    
+}
+
+.sidebar-background hover {
+    color:#04C56B;
+}
 
 
 
