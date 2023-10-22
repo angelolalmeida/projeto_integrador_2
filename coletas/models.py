@@ -1,5 +1,5 @@
-from django.db import models
 
+from django.db import models
 
 class Coleta(models.Model):
     DATA_CHOICES = (
