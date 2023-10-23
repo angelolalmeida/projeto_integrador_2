@@ -1,59 +1,55 @@
-{% extends 'layouts/base.html' %}
+{% extends "layouts/base.html" %}
 {% load static %}
-
 {% block content %}
-<div class='row'>
-    <div class='col-8'>
-        <h1>Lista de reclamações</h1>
- </div>
-    <div class='col-4'>
-        <a class="btn btn-info" href="{% url 'reclamacaoes_formulario' %}">Nova Reclamação</a>
+    <div class="row">
+        <div class="col-8">
+            <h1>Lista de reclamações</h1>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-info" href="{% url 'reclamacaoes_formulario' %}">Nova Reclamação</a>
+        </div>
     </div>
-</div>
-
-
-<div class='container'>
-    <table class='table table-bordered table-striped'>
-        <tr>
-            <th>Nome</th>
-            <th>Tipo de Reclamação</th>
-            <th>Observação</th>
-            <th>CEP</th>
-            <th>Rua</th>
-            <th>Bairro</th>
-            <th>Número da Casa</th>
-            <th>Complemento</th>
-            <th>Referência</th>
-            <th>Telefone</th>
-            <th>Status</th>
-            <th>Histórico</th>
-            <th>Data de Criação</th>
-        </tr>
-        {% for reclamacao in object_list %}
-        <tr>
-            <td>{{ reclamacao.nome }}</td>
-            <td>{{ reclamacao.tipo_reclamacao }}</td>
-            <td>{{ reclamacao.observacao }}</td>
-            <td>{{ reclamacao.cep }}</td>
-            <td>{{ reclamacao.rua }}</td>
-            <td>{{ reclamacao.bairro }}</td>
-            <td>{{ reclamacao.numero_casa }}</td>
-            <td>{{ reclamacao.complemento }}</td>
-            <td>{{ reclamacao.referencia }}</td>
-            <td>{{ reclamacao.telefone }}</td>
-            <td>{{ reclamacao.status }}</td>
-            <td>{{ reclamacao.historico }}</td>
-            <td>{{ reclamacao.data_criacao }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-
-{% comment %} {% for bairro in bairros %}
+    <div>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Nome</th>
+                <th>Tipo de Reclamação</th>
+                <th>Observação</th>
+                <th>CEP</th>
+                <th>Rua</th>
+                <th>Bairro</th>
+                <th>Número da Casa</th>
+                <th>Complemento</th>
+                <th>Referência</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th>Histórico</th>
+                <th>Data de Criação</th>
+            </tr>
+            {% for reclamacao in object_list %}
+                <tr>
+                    <td>{{ reclamacao.nome }}</td>
+                    <td>{{ reclamacao.tipo_reclamacao }}</td>
+                    <td>{{ reclamacao.observacao }}</td>
+                    <td>{{ reclamacao.cep }}</td>
+                    <td>{{ reclamacao.rua }}</td>
+                    <td>{{ reclamacao.bairro }}</td>
+                    <td>{{ reclamacao.numero_casa }}</td>
+                    <td>{{ reclamacao.complemento }}</td>
+                    <td>{{ reclamacao.referencia }}</td>
+                    <td>{{ reclamacao.telefone }}</td>
+                    <td>{{ reclamacao.status }}</td>
+                    <td>{{ reclamacao.historico }}</td>
+                    <td>{{ reclamacao.data_criacao }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% comment %} {% for bairro in bairros %}
 só um teste para ver se tá salvando os bairros na tabela
     {{ bairro.bairro }}
     <br>
     {{ bairro.cep }}
 
-{% endfor %} {% endcomment %}
+    {% endfor %} {% endcomment %}
 {% endblock content %}

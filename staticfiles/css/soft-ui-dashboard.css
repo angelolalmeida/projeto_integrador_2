@@ -17,6 +17,20 @@ $dark:          $h-color !default;
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+  --main-color: #272D44;
+    --dark-color: #1E2336;
+    --light-color: #ffc27f;
+    --contrast-color: #ff9800;
+    --differential-color: #9C27B0;
+    --primary: #ff9800;
+    --secondary: #26A69A;
+    --accent: #9C27B0;
+    --dark: #272D44;
+    --dark-page: #1E2336;
+    --positive: #21BA45;
+    --negative: #C10015;
+    --info: #31CCEC;
+    --warning: #F2C037; 
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
   --bs-purple: #6f42c1;
