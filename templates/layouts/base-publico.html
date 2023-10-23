@@ -4,12 +4,14 @@
 {% get_direction as direction %}
 {% get_admin_setting as admin_setting %}
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<html lang="{{ LANGUAGE_CODE|default:"pt-br" }}">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="O Projeto Lixo Rico é um projeto de reciclagem realizado pela Associação dos Catadores de Recicláveis de Macatuba em parceria com a Prefeitura Municipal. Nosso objetivo é realizar a coleta seletiva no município e gerar renda para os associados.">
+    <meta name="keywords" content="reciclagem, projeto lixo rico, reciclagem macatuba, catadores de reciclagem, lixo reciclável, lixo reciclavel macatuba">
     <title>
       Projeto Lixo Rico - Associação dos Catadores de Recicláveis de Macatuba SP -
-      {% block title %}{% endblock %}
+      {% block title %}{% endblock title %}
     </title>
     <!-- Favicon -->
     <meta charset="utf-8" />
@@ -29,6 +31,9 @@
             crossorigin="anonymous"></script>
     <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
     <!-- CSS Files -->
+    <link id="css_personalizado"
+          href="{% static 'publico/css/publico.css' %}"
+          rel="stylesheet" />
     <link id="pagestyle"
           href="{% static 'css/soft-ui-dashboard.css' %}"
           rel="stylesheet" />
