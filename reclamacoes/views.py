@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
 
-class ReclamacoesListView(LoginRequiredMixin, ListView):
+class ReclamacoesListView(ListView):
     paginate_by = 8
     model = Reclamacoes    
 

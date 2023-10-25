@@ -4,6 +4,15 @@
 {% block content %}
 <!-- Estilos -->
 <style>
+  #id_cpfOpcional {
+    border: 1px solid #000; /* Altere para a cor desejada */
+    text-transform: uppercase;
+  }
+
+  #id_cpfOpcional:checked {
+    background-color: green;
+  }
+
   .mensagem-vermelha {
       color: red;
   }
@@ -21,7 +30,7 @@
 <!-- Formulário -->
 <div class="container">
     <h1>Formulário de Reclamações</h1>
-    <form method="post" action="" class="form-group mt-3">
+    <form method="post" action="" class="form-group mt-3" onsubmit="return showMessage()">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="row mt-3">
@@ -38,7 +47,18 @@
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function() {
+function showMessage() {
+    // Substitua isso pela sua condição
+    if (dadosValidadosESalvosComSucesso) { 
+        alert("Sua reclamação foi enviada. Caso tenha optado por acompanhar sua reclamação, pesquise por CPF.");
+        return true;
+    } else {
+        // Se os dados não foram validados ou salvos corretamente, não exiba a mensagem
+        return false;
+    }
+}
+
+$(document).ready(function() {
     // Quando a página é carregada, verificar o estado do campo cpfOpcional
     if ($('#id_cpfOpcional').is(':checked')) {
         // Se cpfOpcional estiver marcado, permitir a edição do campo CPF

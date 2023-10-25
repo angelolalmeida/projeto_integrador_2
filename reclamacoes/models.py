@@ -26,7 +26,7 @@ class Reclamacoes(models.Model):
     cep = models.CharField(max_length=100, null=True)
     rua = models.CharField(max_length=200, blank=True)
     bairro = models.ForeignKey(Bairro, on_delete=models.CASCADE, editable=False)
-    numero_casa = models.CharField(max_length=10)
+    numero_casa = models.CharField(max_length=10, blank=True)
     complemento = models.CharField(max_length=100, blank=True, null=True)
     referencia = models.CharField(max_length=100, blank=True, null=True)
     telefone = models.CharField(max_length=20, blank=True, null=True)

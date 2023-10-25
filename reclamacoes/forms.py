@@ -9,14 +9,14 @@ def validate_cpf(value):
         raise ValidationError('CPF deve conter exatamente 11 dígitos.')
 
 class ReclamacoesForm(forms.ModelForm):
-    cpf = forms.CharField(validators=[validate_cpf], widget=forms.TextInput(attrs={'id': 'id_cpf'}), required=False)
-    cpfOpcional = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'id': 'id_cpfOpcional'}))
+    cpf = forms.CharField(label='CPF',validators=[validate_cpf], widget=forms.TextInput(attrs={'id': 'id_cpf'}), required=False)
+    cpfOpcional = forms.BooleanField(label='PARA ACOMPANHAR SUA RECLAMAÇÃO SELECIONE A OPÇÃO E PRENCHA SEU CPF',required=False, widget=forms.CheckboxInput(attrs={'id': 'id_cpfOpcional'}))
 
     class Meta:
         model = Reclamacoes
-        fields = ['nome', 'cpf','cpfOpcional','tipo_reclamacao', 'observacao',
+        fields = ['nome','tipo_reclamacao', 'observacao',
                   'cep', 'rua', 'numero_casa', 'complemento',
-                  'referencia', 'telefone',]
+                  'referencia', 'telefone', 'cpfOpcional','cpf',]
         labels = {'cpfOpcional':'OPCIONAL','telefone': 'TELEFONE','complemento': 'COMPLEMENTO','numero_casa': 'NÚMERO CASA','rua': 'RUA','cep': 'CEP','nome': 'NOME','cpf': 'CPF','observacao': 'DETALHES DA RECLAMAÇÃO','tipo_reclamacao': 'TIPO DE RECLAMAÇÃO', 'numero_casa': 'NÚMERO DA CASA','referencia':'PONTO DE REFERÊNCIA' }
         help_texts = {}
 
