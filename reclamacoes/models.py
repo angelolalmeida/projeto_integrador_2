@@ -20,7 +20,7 @@ TIPO_RECLAMACAO_CHOICES = [
 class Reclamacoes(models.Model):
     nome = models.CharField(max_length=100, null=True)
     cpf = CPFField('cpf')
-    cpfOpcional = models.BooleanField(default=False)
+    acompanhareclamacao = models.BooleanField(default=False)
     tipo_reclamacao = models.CharField(max_length=20, choices=TIPO_RECLAMACAO_CHOICES, default='outros')
     observacao = models.TextField(max_length=500)
     cep = models.CharField(max_length=100, null=True)

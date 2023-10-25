@@ -4,12 +4,12 @@
 {% block content %}
 <!-- Estilos -->
 <style>
-  #id_cpfOpcional {
+  #id_acompanhareclamacao {
     border: 1px solid #000; /* Altere para a cor desejada */
     text-transform: uppercase;
   }
 
-  #id_cpfOpcional:checked {
+  #id_acompanhareclamacao:checked {
     background-color: green;
   }
 
@@ -60,7 +60,7 @@ function showMessage() {
 
 $(document).ready(function() {
     // Quando a página é carregada, verificar o estado do campo cpfOpcional
-    if ($('#id_cpfOpcional').is(':checked')) {
+    if ($('#id_acompanhareclamacao').is(':checked')) {
         // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
         $('#id_cpf').prop('readonly', false);
     } else {
@@ -69,7 +69,7 @@ $(document).ready(function() {
     }
 
     // Quando o estado do campo cpfOpcional mudar, atualizar a propriedade readonly do campo CPF
-    $('#id_cpfOpcional').change(function() {
+    $('#id_acompanhareclamacao').change(function() {
         if ($(this).is(':checked')) {
             // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
             $('#id_cpf').prop('readonly', false);
