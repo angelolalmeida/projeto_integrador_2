@@ -2,19 +2,23 @@
 {% load static %}
 
 {% block content %}
-{% if messages %}
+<!-- Estilos -->
 <style>
   .mensagem-vermelha {
       color: red;
   }
 </style>
 
+<!-- Mensagens -->
+{% if messages %}
 <ul class="messages">
   {% for message in messages %}
   <li{% if message.tags %} class="{{ message.tags }} mensagem-vermelha"{% endif %}>{{ message }}</li>
   {% endfor %}
 </ul>
 {% endif %}
+
+<!-- Formulário -->
 <div class="container">
     <h1>Formulário de Reclamações</h1>
     <form method="post" action="" class="form-group mt-3">
@@ -28,13 +32,27 @@
             <button type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </div>
-    
     </form>
 </div>
 
+<!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
+    // Inicialmente, definir o campo CPF como somente leitura
+    $('#id_cpf').prop('readonly', true);
+
+    // Quando o estado do campo cpfOpcional mudar, atualizar a propriedade readonly do campo CPF
+    $('#id_cpfOpcional').change(function() {
+        if ($(this).is(':checked')) {
+            // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
+            $('#id_cpf').prop('readonly', false);
+        } else {
+            // Se cpfOpcional não estiver marcado, definir o campo CPF como somente leitura
+            $('#id_cpf').prop('readonly', true);
+        }
+    });
+
     $('#id_cep').change(function() {
         var cep = $(this).val();
         $.ajax({

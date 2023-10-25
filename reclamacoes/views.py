@@ -6,10 +6,6 @@ import requests, json
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
-from django.http import HttpResponse
-import requests, json
-from .models import Bairro
-# Create your views here.
 
 class ReclamacoesListView(LoginRequiredMixin, ListView):
     paginate_by = 8
@@ -20,14 +16,12 @@ class ReclamacoesListView(LoginRequiredMixin, ListView):
         if query:
             queryset = self.model.objects.filter(cpf__icontains=query)
         else:
-            queryset = self.model.objects.none()  # Retorna um queryset vazio
+            queryset = self.model.objects.none()
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
-
 
 def reclamacoes_formulario(request):
     form = ReclamacoesForm()
@@ -43,36 +37,29 @@ def reclamacoes_formulario(request):
 
             bairro = Bairro.objects.filter(cep='17250000').first()
 
-            if requisicao.text:
-                try:
-                    dic_requisicao = json.loads(requisicao.text)
-                except json.JSONDecodeError:
-                    messages.error(request, "O CEP fornecido não é válido.")
-                    dic_requisicao = {}
-            else:
-                messages.error(request, "O CEP fornecido não é válido.")
-                dic_requisicao = {}
+            try:
+                dic_requisicao = json.loads(requisicao.text)
+                if requisicao.status_code == 200 and 'erro' not in dic_requisicao:            
+                    bairro_nome = dic_requisicao.get('bairro')
+                    logradouro = dic_requisicao.get('logradouro')
 
-            if requisicao.status_code == 200 and 'erro' not in dic_requisicao:            
-                bairro = dic_requisicao.get('bairro')
-                logradouro = dic_requisicao.get('logradouro')
+                    verifica_bairro = Bairro.objects.filter(cep=cep).first()
 
-                verifica_bairro = Bairro.objects.filter(cep=cep).first()
-
-                if verifica_bairro:
-                    bairro = verifica_bairro
-                
+                    if verifica_bairro:
+                        bairro = verifica_bairro
+                    
+                    else:
+                        bairro = Bairro(bairro=bairro_nome, cep=cep, logradouro=logradouro)
+                        bairro.save()
+                    
+                    reclamacao.bairro = bairro
+                    reclamacao.rua = logradouro
+                    reclamacao.save()
+                    return redirect('reclamacoes_lista')
                 else:
-                    bairro = Bairro(bairro=bairro, cep=cep, logradouro=logradouro)
-                    bairro.save()
-                
-            if requisicao.status_code == 200 and 'erro' not in dic_requisicao:
-                reclamacao.bairro = bairro
-                reclamacao.rua = logradouro  # Adicione esta linha para salvar o nome da rua na reclamação.
-                reclamacao.save()
-                return redirect('reclamacoes_lista')
-            else:
-                messages.error(request, "Não foi possível salvar a reclamação, CEP inválido.")
+                    messages.error(request, "Não foi possível salvar a reclamação, CEP inválido.")
+            except json.JSONDecodeError:
+                messages.error(request, "O CEP fornecido não é válido.")
 
     context = {'form': form}
     return render(request, 'reclamacoes/reclamacoes_form.html', context)

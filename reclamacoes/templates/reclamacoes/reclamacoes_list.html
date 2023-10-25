@@ -1,6 +1,8 @@
 {% extends "layouts/base.html" %}
 {% load static %}
+
 {% block content %}
+    <!-- Título e botão de nova reclamação -->
     <div class="row">
         <div class="col-8">
             <h1>Consulte sua reclamação</h1>
@@ -9,36 +11,38 @@
             <a class="btn btn-info" href="{% url 'reclamacaoes_formulario' %}">Nova Reclamação</a>
         </div>
     </div>
-    
 
+    <!-- Formulário de busca por CPF -->
     <form method="GET" action="" style="display: flex;">
         <input type="text" name="cpf" placeholder="Buscar por CPF(Apenas números)" pattern="\d{11}" title="Por favor, insira um CPF válido com 11 dígitos(Apenas números)." style="width: 250px; margin-right: 10px;">
         <input type="submit" value="Buscar" class="btn-buscar">
     </form>
 
-
+    <!-- Tabela de resultados -->
     <div>
         {% if object_list %}
             <table class="table table-bordered table-striped">
-            <tr>
-                <th>Status</th>
-                <th>Resposta</th>
-                <th>Nome</th>
-                <th>Tipo de Reclamação</th>
-                <th>Observação</th>
-            </tr>
-            {% for reclamacao in object_list %}
                 <tr>
-                    <td>{{ reclamacao.status }}</td>
-                    <td>{{ reclamacao.historico }}</td>
-                    <td>{{ reclamacao.nome }}</td>
-                    <td>{{ reclamacao.tipo_reclamacao }}</td>
-                    <td>{{ reclamacao.observacao }}</td>
+                    <th>Status</th>
+                    <th>Resposta</th>
+                    <th>Nome</th>
+                    <th>Tipo de Reclamação</th>
+                    <th>Observação</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for reclamacao in object_list %}
+                    <tr>
+                        <td>{{ reclamacao.status }}</td>
+                        <td>{{ reclamacao.historico }}</td>
+                        <td>{{ reclamacao.nome }}</td>
+                        <td>{{ reclamacao.tipo_reclamacao }}</td>
+                        <td>{{ reclamacao.observacao }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
         {% elif request.GET.cpf %}
+            <!-- Mensagem quando não há resultados -->
             <p>Não encontramos reclamações para esse CPF.</p>
         {% endif %}
     </div>
+
 {% endblock content %}
