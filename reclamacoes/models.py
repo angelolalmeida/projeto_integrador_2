@@ -1,30 +1,32 @@
 from django.db import models
 from django.utils import timezone
 from moradores.models import Bairro
-
+from cpf_field.models import CPFField
 # Create your models here.
 STATUS_CHOICES = [
         ('pendente', 'Pendente'),
-        ('verificado', 'Verificado'),
+        ('verificando', 'Verificando'),
         ('resolvido', 'Resolvido'),
-        ('nao_resolvido', 'Não Resolvido'),
     ]
 
 TIPO_RECLAMACAO_CHOICES = [
     ('nao_recebi', 'Não recebi o saco verde'),
     ('caminhao_nao_passou', 'Caminhão não passou'),
     ('saco_rasgado', 'Saco rasgado'),
+    ('sugestao', 'Sugestão'),
     ('outros', 'Outros'),
 ]
 
 
 class Reclamacoes(models.Model):
     nome = models.CharField(max_length=100,null=True)
+    cpf = CPFField('cpf',default='')
+    cpfOpcional = models.BooleanField(default=False)
     tipo_reclamacao = models.CharField(max_length=20, choices=TIPO_RECLAMACAO_CHOICES, default='outros',)
     observacao = models.TextField(max_length=500)
     cep = models.CharField(max_length=100, null=True)
     rua = models.CharField(max_length=200, blank=True)
-    bairro = models.ForeignKey(Bairro, on_delete=models.CASCADE)
+    bairro = models.ForeignKey(Bairro, on_delete=models.CASCADE, editable=False)
     numero_casa = models.CharField(max_length=10)
     complemento = models.CharField(max_length=100, blank=True, null=True)
     referencia = models.CharField(max_length=100, blank=True, null=True)
@@ -32,8 +34,10 @@ class Reclamacoes(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pendente', editable=False)
     historico = models.TextField(blank=True, null=True, editable=False)
     data_criacao = models.DateTimeField(default=timezone.now, editable=False)
-
-    # Outros campos do modelo Reclamacao
+     
+    def save(self, *args, **kwargs):
+        self.nome = self.nome.upper()
+        super(Reclamacoes, self).save(*args, **kwargs)
 
     def __str__(self):
         return f"Reclamação {self.id}"
@@ -42,4 +46,3 @@ class Reclamacoes(models.Model):
         db_table = 'reclamacoes'
         verbose_name_plural = 'Reclamações'
         verbose_name = 'Reclamação'
-        # ordering = ['nome']

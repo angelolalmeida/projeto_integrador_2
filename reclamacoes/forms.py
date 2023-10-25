@@ -3,12 +3,12 @@ from .models import Reclamacoes
 
 
 class ReclamacoesForm(ModelForm):
+
     class Meta:
         model = Reclamacoes
-        # data_vencimento = forms.DateField(widget=DateInput())
 
-        fields = ['nome', 'tipo_reclamacao', 'observacao',
-                  'cep', 'rua', 'bairro', 'numero_casa', 'complemento',
+        fields = ['nome', 'cpf','cpfOpcional','tipo_reclamacao', 'observacao',
+                  'cep', 'rua', 'numero_casa', 'complemento',
                     'referencia', 'telefone',]
-        labels = {'tipo_reclamacao': 'Tipo da reclamação', 'numero_casa': 'Número da Casa','referencia':'Ponto de Referência' }
+        labels = {'cpfOpcional':'OPCIONAL','telefone': 'TELEFONE','complemento': 'COMPLEMENTO','numero_casa': 'NÚMERO CASA','rua': 'RUA','cep': 'CEP','nome': 'NOME','cpf': 'CPF','observacao': 'DETALHES DA RECLAMAÇÃO','tipo_reclamacao': 'TIPO DE RECLAMAÇÃO', 'numero_casa': 'NÚMERO DA CASA','referencia':'PONTO DE REFERÊNCIA' }
         help_texts = {}

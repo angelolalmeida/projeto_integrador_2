@@ -49,12 +49,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'cpf_field',
 
     "home",
     "dashboard",
     "moradores",
     "publico",
     "reclamacoes",
+    "coletas",
 
 ]
 
@@ -114,6 +116,7 @@ if DB_ENGINE and DB_NAME and DB_USERNAME:
             'PORT': DB_PORT,
         },
     }
+    # postgres://projeto_integrador2:6V6B8vqi97Yl4SNZwnwNDfrwsXQRPPJ3@dpg-ckrf4662eoec73feg88g-a/projeto_integrador2
 else:
     DATABASES = {
         'default': {
@@ -159,7 +162,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_ROOT = os.path.join('static')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static')),
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static')),
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'templates/static'),
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # if not DEBUG:
 #    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
