@@ -4,28 +4,16 @@
 {% block content %}
 <!-- Estilos -->
 <style>
-  #id_acompanhareclamacao {
+  #id_acompanhar_reclamacao {
     border: 1px solid #000; /* Altere para a cor desejada */
     text-transform: uppercase;
   }
 
-  #id_acompanhareclamacao:checked {
-    background-color: green;
-  }
 
   .mensagem-vermelha {
       color: red;
   }
 </style>
-
-<!-- Mensagens -->
-{% if messages %}
-<ul class="messages">
-  {% for message in messages %}
-  <li{% if message.tags %} class="{{ message.tags }} mensagem-vermelha"{% endif %}>{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
 
 <!-- Formulário -->
 <div class="container">
@@ -47,20 +35,10 @@
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-function showMessage() {
-    // Substitua isso pela sua condição
-    if (dadosValidadosESalvosComSucesso) { 
-        alert("Sua reclamação foi enviada. Caso tenha optado por acompanhar sua reclamação, pesquise por CPF.");
-        return true;
-    } else {
-        // Se os dados não foram validados ou salvos corretamente, não exiba a mensagem
-        return false;
-    }
-}
 
 $(document).ready(function() {
     // Quando a página é carregada, verificar o estado do campo cpfOpcional
-    if ($('#id_acompanhareclamacao').is(':checked')) {
+    if ($('#id_acompanhar_reclamacao').is(':checked')) {
         // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
         $('#id_cpf').prop('readonly', false);
     } else {
@@ -69,7 +47,7 @@ $(document).ready(function() {
     }
 
     // Quando o estado do campo cpfOpcional mudar, atualizar a propriedade readonly do campo CPF
-    $('#id_acompanhareclamacao').change(function() {
+    $('#id_acompanhar_reclamacao').change(function() {
         if ($(this).is(':checked')) {
             // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
             $('#id_cpf').prop('readonly', false);
