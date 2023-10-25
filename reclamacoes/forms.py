@@ -9,7 +9,7 @@ def validate_cpf(value):
         raise ValidationError('CPF deve conter exatamente 11 dígitos.')
 
 class ReclamacoesForm(forms.ModelForm):
-    cpf = forms.CharField(validators=[validate_cpf], widget=forms.TextInput(attrs={'id': 'id_cpf'}))
+    cpf = forms.CharField(validators=[validate_cpf], widget=forms.TextInput(attrs={'id': 'id_cpf'}), required=False)
     cpfOpcional = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={'id': 'id_cpfOpcional'}))
 
     class Meta:
@@ -19,3 +19,11 @@ class ReclamacoesForm(forms.ModelForm):
                   'referencia', 'telefone',]
         labels = {'cpfOpcional':'OPCIONAL','telefone': 'TELEFONE','complemento': 'COMPLEMENTO','numero_casa': 'NÚMERO CASA','rua': 'RUA','cep': 'CEP','nome': 'NOME','cpf': 'CPF','observacao': 'DETALHES DA RECLAMAÇÃO','tipo_reclamacao': 'TIPO DE RECLAMAÇÃO', 'numero_casa': 'NÚMERO DA CASA','referencia':'PONTO DE REFERÊNCIA' }
         help_texts = {}
+
+    def clean(self):
+        cleaned_data = super().clean()
+        cpf = cleaned_data.get('cpf')
+        cpfOpcional = cleaned_data.get('cpfOpcional')
+
+        if cpfOpcional and not cpf:
+            self.add_error('cpf', 'CPF é obrigatório quando a opção CPF Opcional está selecionada.')

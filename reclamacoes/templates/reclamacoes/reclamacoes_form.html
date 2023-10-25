@@ -38,9 +38,15 @@
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
-    // Inicialmente, definir o campo CPF como somente leitura
-    $('#id_cpf').prop('readonly', true);
+  $(document).ready(function() {
+    // Quando a página é carregada, verificar o estado do campo cpfOpcional
+    if ($('#id_cpfOpcional').is(':checked')) {
+        // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
+        $('#id_cpf').prop('readonly', false);
+    } else {
+        // Se cpfOpcional não estiver marcado, definir o campo CPF como somente leitura
+        $('#id_cpf').prop('readonly', true);
+    }
 
     // Quando o estado do campo cpfOpcional mudar, atualizar a propriedade readonly do campo CPF
     $('#id_cpfOpcional').change(function() {
@@ -48,8 +54,9 @@ $(document).ready(function() {
             // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
             $('#id_cpf').prop('readonly', false);
         } else {
-            // Se cpfOpcional não estiver marcado, definir o campo CPF como somente leitura
+            // Se cpfOpcional não estiver marcado, definir o campo CPF como somente leitura e limpar o valor
             $('#id_cpf').prop('readonly', true);
+            $('#id_cpf').val('');
         }
     });
 
@@ -67,6 +74,7 @@ $(document).ready(function() {
         });
     });
 });
+
 </script>
 
 {% endblock content %}
