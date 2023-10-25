@@ -18,8 +18,7 @@ class ReclamacoesForm(forms.ModelForm):
                   'cep', 'rua', 'numero_casa', 'complemento',
                   'referencia', 'telefone', 'acompanhar_reclamacao','cpf',]
         labels = {'acompanhar_reclamacao':'OPCIONAL','telefone': 'TELEFONE','complemento': 'COMPLEMENTO','numero_casa': 'NÚMERO CASA','rua': 'RUA','cep': 'CEP','nome': 'NOME','cpf': 'CPF','observacao': 'DETALHES DA RECLAMAÇÃO','tipo_reclamacao': 'TIPO DE RECLAMAÇÃO', 'numero_casa': 'NÚMERO DA CASA','referencia':'PONTO DE REFERÊNCIA' }
-        help_texts = {'acompanhar_reclamacao': 'Se deseja acompanhar a sua reclamação, selecione a opção abaixo e insira seu CPF.'
-}
+
 
     def clean(self):
         cleaned_data = super().clean()

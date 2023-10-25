@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-<!-- Estilos -->
+
 <style>
   #id_acompanhar_reclamacao {
-    border: 1px solid #000; /* Altere para a cor desejada */
+    border: 1px solid #000;
     text-transform: uppercase;
   }
 
@@ -15,7 +15,7 @@
   }
 </style>
 
-<!-- Formulário -->
+
 <div class="container">
     <h1>Formulário de Reclamações</h1>
     <form method="post" action="" class="form-group mt-3" onsubmit="return showMessage()">
@@ -32,27 +32,27 @@
     </form>
 </div>
 
-<!-- Scripts -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
 $(document).ready(function() {
-    // Quando a página é carregada, verificar o estado do campo cpfOpcional
+    
     if ($('#id_acompanhar_reclamacao').is(':checked')) {
-        // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
+       
         $('#id_cpf').prop('readonly', false);
     } else {
-        // Se cpfOpcional não estiver marcado, definir o campo CPF como somente leitura
+       
         $('#id_cpf').prop('readonly', true);
     }
 
-    // Quando o estado do campo cpfOpcional mudar, atualizar a propriedade readonly do campo CPF
+    
     $('#id_acompanhar_reclamacao').change(function() {
         if ($(this).is(':checked')) {
-            // Se cpfOpcional estiver marcado, permitir a edição do campo CPF
+
             $('#id_cpf').prop('readonly', false);
         } else {
-            // Se cpfOpcional não estiver marcado, definir o campo CPF como somente leitura e limpar o valor
+
             $('#id_cpf').prop('readonly', true);
             $('#id_cpf').val('');
         }
