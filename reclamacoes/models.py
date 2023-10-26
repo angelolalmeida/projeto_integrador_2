@@ -40,7 +40,7 @@ class Reclamacoes(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Reclamação {self.id}"
+        return f"Reclamação de {self.nome}"
 
     class Meta:
         db_table = 'reclamacoes'
