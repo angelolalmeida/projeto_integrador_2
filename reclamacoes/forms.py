@@ -17,7 +17,7 @@ class ReclamacoesForm(forms.ModelForm):
         fields = ['nome','tipo_reclamacao', 'observacao',
                   'cep', 'rua', 'numero_casa', 'complemento',
                   'referencia', 'telefone', 'acompanhar_reclamacao','cpf',]
-        labels = {'acompanhar_reclamacao':'OPCIONAL','telefone': 'TELEFONE','complemento': 'COMPLEMENTO','numero_casa': 'NÚMERO CASA','rua': 'RUA','cep': 'CEP','nome': 'NOME','cpf': 'CPF','observacao': 'DETALHES DA RECLAMAÇÃO','tipo_reclamacao': 'TIPO DE RECLAMAÇÃO', 'numero_casa': 'NÚMERO DA CASA','referencia':'PONTO DE REFERÊNCIA' }
+        labels = {'acompanhar_reclamacao':'OPCIONAL','telefone': 'TELEFONE','complemento': 'COMPLEMENTO','numero_casa': 'NÚMERO CASA','rua': 'RUA','cep': 'CEP','nome': 'NOME COMPLETO','cpf': 'CPF','observacao': 'DETALHES DA RECLAMAÇÃO','tipo_reclamacao': 'TIPO DE RECLAMAÇÃO', 'numero_casa': 'NÚMERO DA CASA','referencia':'PONTO DE REFERÊNCIA' }
 
 
     def clean(self):

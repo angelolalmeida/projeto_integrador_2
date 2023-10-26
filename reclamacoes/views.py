@@ -57,7 +57,7 @@ def reclamacoes_formulario(request):
                     reclamacao.save()
                     return redirect('reclamacoes_lista')
                 else:
-                    messages.error(request, "Não foi possível salvar a reclamação, CEP inválido.")
+                    messages.error(request, "Não foi possível salvar a reclamação, CEP não encontrado.")
             except json.JSONDecodeError:
                 messages.error(request, "O CEP fornecido não é válido.")
 

@@ -10,6 +10,7 @@ class ReclamacoesAdmin(admin.ModelAdmin):
     ordering = '-id',
     search_fields = 'nome','status',
     list_per_page = 10
+    list_filter = 'status',
     list_max_show_all = 10
     list_display_links = 'id', 'nome',
     readonly_fields = ('nome', 'cpf', 'tipo_reclamacao', 'observacao', 'rua',
