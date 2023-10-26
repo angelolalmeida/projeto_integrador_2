@@ -26,14 +26,14 @@ class Reclamacoes(models.Model):
     observacao = models.TextField(max_length=500)
     cep = models.CharField(max_length=100, null=True)
     rua = models.CharField(max_length=200, blank=True)
-    bairro = models.ForeignKey(Bairro, on_delete=models.CASCADE, editable=False)
+    bairro = models.ForeignKey(Bairro, on_delete=models.CASCADE)
     numero_casa = models.CharField(max_length=10, blank=True)
     complemento = models.CharField(max_length=100, blank=True, null=True)
     referencia = models.CharField(max_length=100, blank=True, null=True)
     telefone = models.CharField(max_length=20, blank=True, null=True)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pendente', editable=False)
-    historico = models.TextField(blank=True, null=True, editable=False,default='Aguardando resposta')
-    data_criacao = models.DateTimeField(default=timezone.now, editable=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pendente')
+    historico = models.TextField(blank=True, null=True, default='Aguardando resposta')
+    data_criacao = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
         self.nome = self.nome.upper()
