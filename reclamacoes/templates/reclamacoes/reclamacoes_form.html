@@ -9,7 +9,6 @@
     text-transform: uppercase;
   }
 
-
   .mensagem-vermelha {
       color: red;
   }
@@ -23,10 +22,9 @@
 </ul>
 {% endif %}
 
-
 <div class="container">
     <h1>Formulário de Reclamações</h1>
-    <form method="post" action="" class="form-group mt-3" onsubmit="return showMessage()">
+    <form method="post" action="" class="form-group mt-3">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="row mt-3">
@@ -40,27 +38,21 @@
     </form>
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
 $(document).ready(function() {
     
     if ($('#id_acompanhar_reclamacao').is(':checked')) {
-       
         $('#id_cpf').prop('readonly', false);
     } else {
-       
         $('#id_cpf').prop('readonly', true);
     }
 
-    
     $('#id_acompanhar_reclamacao').change(function() {
         if ($(this).is(':checked')) {
-
             $('#id_cpf').prop('readonly', false);
         } else {
-
             $('#id_cpf').prop('readonly', true);
             $('#id_cpf').val('');
         }

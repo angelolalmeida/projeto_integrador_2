@@ -43,6 +43,6 @@ class Reclamacoes(models.Model):
         return f"Reclamação de {self.nome}"
 
     class Meta:
-        db_table = 'reclamacoes'
-        verbose_name_plural = 'Reclamações'
-        verbose_name = 'Reclamação'
+        db_table = ''
+        verbose_name_plural = ''
+        verbose_name = ''

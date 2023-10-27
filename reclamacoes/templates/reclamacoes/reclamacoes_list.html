@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-    
     <div class="row">
         <div class="col-8">
             <h1>Consulte sua reclamação</h1>
@@ -12,16 +11,14 @@
         </div>
     </div>
 
-    
     <form method="GET" action="" style="display: flex;">
         <input type="text" name="cpf" placeholder="Buscar por CPF(Apenas números)" pattern="\d{11}" title="Por favor, insira um CPF válido com 11 dígitos(Apenas números)." style="width: 250px; margin-right: 10px;">
-        <input type="submit" value="Buscar" class="btn-buscar">
+        <input type="submit" value="Buscar" class="btn btn-primary">
     </form>
 
-
-    <div>
-        {% if object_list %}
-            <table class="table table-bordered table-striped">
+    {% if object_list %}
+        <table class="table table-bordered table-striped mt-3">
+            <thead>
                 <tr>
                     <th>DATA</th>
                     <th>STATUS</th>
@@ -29,8 +26,9 @@
                     <th>NOME</th>
                     <th>TIPO DE RECLAMAÇÃO</th>
                     <th>DESCRIÇÃO</th>
-                    
                 </tr>
+            </thead>
+            <tbody>
                 {% for reclamacao in object_list %}
                     <tr>
                         <td>{{ reclamacao.data_criacao }}</td>
@@ -41,11 +39,9 @@
                         <td>{{ reclamacao.observacao }}</td>
                     </tr>
                 {% endfor %}
-            </table>
-        {% elif request.GET.cpf %}
-            
-            <p>Não existe reclamação com esse CPF.</p>
-        {% endif %}
-    </div>
-
+            </tbody>
+        </table>
+    {% elif request.GET.cpf %}
+        <p class="mt-3">Não existe reclamação com esse CPF.</p>
+    {% endif %}
 {% endblock content %}
