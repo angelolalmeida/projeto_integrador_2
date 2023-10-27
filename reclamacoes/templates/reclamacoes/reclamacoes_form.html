@@ -2,20 +2,77 @@
 {% load static %}
 
 {% block content %}
+
+<style>
+  #id_acompanhar_reclamacao {
+    border: 1px solid #000;
+    text-transform: uppercase;
+  }
+
+  .mensagem-vermelha {
+      color: red;
+  }
+</style>
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }} mensagem-vermelha"{% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
 <div class="container">
     <h1>Formulário de Reclamações</h1>
     <form method="post" action="" class="form-group mt-3">
         {% csrf_token %}
-        {{ form}}
+        {{ form.as_p }}
         <div class="row mt-3">
           <div class="col-6 ">
-            <a class="btn btn-outline-secondary text-decoration-none" href="{% url 'reclamacoes_lista'%}"> Cancelar </a>
+            <a class="btn btn-outline-secondary text-decoration-none" href="{% url 'reclamacaoes_formulario'%}"> Cancelar </a>
           </div>
           <div class="col-6 text-end">
             <button type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </div>
-    
     </form>
-    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+    
+    if ($('#id_acompanhar_reclamacao').is(':checked')) {
+        $('#id_cpf').prop('readonly', false);
+    } else {
+        $('#id_cpf').prop('readonly', true);
+    }
+
+    $('#id_acompanhar_reclamacao').change(function() {
+        if ($(this).is(':checked')) {
+            $('#id_cpf').prop('readonly', false);
+        } else {
+            $('#id_cpf').prop('readonly', true);
+            $('#id_cpf').val('');
+        }
+    });
+
+    $('#id_cep').change(function() {
+        var cep = $(this).val();
+        $.ajax({
+            url: 'https://viacep.com.br/ws/'+ cep +'/json/',
+            dataType: 'json',
+            success: function(response) {
+                $('#id_rua').val(response.logradouro);
+                $('#id_bairro').val(response.bairro);
+                $('#id_rua').prop('readonly', true);
+                $('#id_bairro').prop('readonly', true);
+            }
+        });
+    });
+});
+
+</script>
+
 {% endblock content %}
