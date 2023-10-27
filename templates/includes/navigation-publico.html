@@ -4,7 +4,9 @@
 <nav class="navbar navbar-expand-lg blur p-0 top-0 z-index-3 shadow navbar-dark bg-primary ">
   <div class="container-fluid pe-0 text-white bg-gradient-primary">
     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white"
-       href="/">Projeto Lixo Rico Macatuba-SP</a>
+       href="/">
+       <i class="fas fa-recycle text-white"></i>
+       Projeto Lixo Rico Macatuba-SP</a>
     <button class="navbar-toggler shadow-none ms-2 text-white"
             type="button"
             data-bs-toggle="collapse"
@@ -58,6 +60,15 @@
              href="{% url 'sobre' %}">
             <i class="fa fa-users text-white"></i>
             <span class="p-2 text-white">Sobre o Lixo Rico</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center me-2 active"
+             aria-current="page"
+             href="{% url 'dashboard' %}">
+             <i class="fas fa-sign-in-alt text-white"></i>
+            
+            <span class="p-2 text-white">Login</span>
           </a>
         </li>
       </ul>

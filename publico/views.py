@@ -15,5 +15,7 @@ def sobre(request):
 
 
 def agenda(request):
-
     return render(request, 'publico_agenda.html')
+
+def materiais(request):
+    return render(request, 'publico_materiais.html')
