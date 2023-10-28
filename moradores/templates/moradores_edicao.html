@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row ">
+    <div class="col-8">
+        <h1>Editar usuário</h1>
+    </div>    
+</div>
+
+{% if erro %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">                
+    <span class="alert-text"><strong>Atenção!</strong> {{ erro }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+
+<div>
+    <form method="post">
+        {% csrf_token %}        
+        <input type='text' name='nome' value="{{ morador.nome }}">
+        <br>
+        <input id="cep" type='text' name='cep' 
+                value="{{ morador.cep }}"
+                pattern="[0-9]{8}" 
+                title="CEP deve possuir 8 números">    
+        <br>
+        <input type='text' name='endereco' value="{{ morador.endereco }}">
+        <br>
+        <input type='text'
+                name='numero_endereco'
+                value="{{ morador.numero_endereco }}">
+        <br>
+        <input type='text' name='whatsapp' value="{{ morador.whatsapp }}">
+        <br>
+        <input class="btn btn-lg btn-primary" type='submit' value='Salvar Alterações'>
+        <br>        
+    </form>
+
+    <form method="POST" action="{% url 'excluir_morador' morador.id %}">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value='Excluir' onclick="return confirm('Tem certeza que quer excluir este cadastro?')">
+    </form>
+    
+</div>
+
+{% endblock content %}
