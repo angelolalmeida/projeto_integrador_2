@@ -12,6 +12,10 @@
     </div>
 </div>
 
+<div class="col-8">
+    <p>Clique no nome dos moradores para editar seu cadastro</p>
+</div>
+
 <div>
     <table class="table table-bordered table-striped">
         <tr>
@@ -22,7 +26,7 @@
         </tr>
         {% for morador in moradores %}
         <tr>
-            <td>{{ morador.nome }}</td>
+            <td><a href="{% url 'moradores_edicao' morador.id %}">{{ morador.nome }}</a></td>
             <td>{{ morador.endereco }}, {{ morador.numero_endereco }}, {{ morador.cep }}</td>
             <td>{{ morador.bairro }}</td>
             <td>{{ morador.whatsapp }}</td>
@@ -30,13 +34,5 @@
         {% endfor %}
     </table>
 </div>
-
-{% comment %} {% for bairro in bairros %}
-só um teste para ver se tá salvando os bairros na tabela
-    {{ bairro.bairro }}
-    <br>
-    {{ bairro.cep }}
-
-{% endfor %} {% endcomment %}
 
 {% endblock content %}

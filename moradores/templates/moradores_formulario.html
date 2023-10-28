@@ -3,11 +3,21 @@
 {% block content %}
     <div>
         <h1>Formulário de Moradores</h1>
-        <form action="{% url 'moradores_formulario' %}" method='post'>
+
+        {% if erro %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">                
+                <span class="alert-text"><strong>Atenção!</strong> {{ erro }}</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+        
+        <form id="moradores" action="{% url 'moradores_formulario' %}" method='post'>
             {% csrf_token %}
             <input type='text' name='nome' placeholder='Digite o nome'>
             <br>
-            <input type='text' name='cep' placeholder='Digite o cep (apenas números)'>
+            <input id="cep" type='text' name='cep' placeholder='Digite o cep (apenas números)' pattern="[0-9]{8}" title="CEP deve possuir 8 números">    
             <br>
             <input type='text' name='endereco' placeholder='Digite o endereço'>
             <br>
@@ -20,4 +30,5 @@
             <input class="btn btn-lg btn-primary" type='submit' value='Salvar'>
         </form>
     </div>
+   
 {% endblock content %}
