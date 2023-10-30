@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>Formulários de Coletas !</h1>
+    <h1>Formulários de Coletas!</h1>
     <form method="post" action="" class="form-group mt-3">
         {% csrf_token %}
         {{ form.id.label_tag }} {{ form.id }}
