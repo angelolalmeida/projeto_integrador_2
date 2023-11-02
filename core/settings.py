@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'cpf_field',
+    "cpf_field",
+    "phonenumber_field",
 
     "home",
     "dashboard",

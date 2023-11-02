@@ -1,0 +1,36 @@
+{% extends "layouts/base-publico.html" %}
+{% load i18n static admin_soft %}
+{% block content %}
+    <main class="main-content">
+        <section>
+            <div class="container mt-4">
+                <div class="m-auto">
+                    <h1 class="text-center">Reciclômetro</h1>
+                    <p class="text-center">Média diária de resíduos coletados por dia Macatuba em toneladas</p>
+                    <p class="text-sm text-center">Fonte: Secretaria de Desenvolvimento Econômico, Inovação e Sustentabilidade da Prefeitura de Macatuba (2023)</p>
+                    <div class="container-fluid">
+                        {% autoescape off %}
+                            {{ reciclado_versus_nao_reciclado_plot }}
+                        {% endautoescape %}
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container mt-4">
+                <div class="m-auto">
+                    <h1 class="text-center">Histórico de Coleta</h1>
+                    <p class="text-center">Quantidade de Recicláveis Coletados por Mês (em toneladas)</p>
+                    <div class="container-fluid">
+                        {% autoescape off %}
+                            {{ reciclado_versus_nao_reciclado_plot }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% include "includes/footer-fullscreen.html" %}
+{% endblock content %}
