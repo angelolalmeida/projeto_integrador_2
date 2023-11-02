@@ -1,14 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Coletas</title>
-</head>
-<body>
-    <h1>Informações das Coletas</h1>
-    <ul>
-        {% for coleta in coletas %}
-            <li>Data da Coletas: {{ coleta.data_coleta }}, Bairro: {{ coleta.bairro }}, Quantidade Coletada: {{ coleta.quantidade_coletada }} {{ coleta.unidade_medida }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Formulários de Coletas!</h1>
+    <form method="post" action="" class="form-group mt-3">
+        {% csrf_token %}
+        {{ form.id.label_tag }} {{ form.id }}
+        {{ form.bairro_id.label_tag }} {{ form.bairro_id }}
+        {{ form.data_coleta.label_tag }} {{ form.data_coleta }}
+        {{ form.quantidade_coletada.label_tag }} {{ form.quantidade_coletada }}
+        <div class="row mt-3">
+          <div class="col-6 ">
+            <a class="btn btn-outline-secondary text-decoration-none" href="{% url 'coletas_lista'%}"> Cancelar </a>
+          </div>
+          <div class="col-6 text-end">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
+   
+      </form>
+</div>
+{% endblock content %}
+
