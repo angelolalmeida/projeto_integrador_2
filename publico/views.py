@@ -112,7 +112,7 @@ def reciclometro(request):
         },
         {
             'Tipo': 'Lixo Reciclado',
-            'Qtde(ton)': 0.8,
+            'Qtde(ton)': 1.12,
         },
         {
             'Tipo': 'Lixo que poderia ser reciclado',
