@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cpf_field",
+    "phonenumber_field",
 
     "home",
     "dashboard",
@@ -115,6 +117,7 @@ if DB_ENGINE and DB_NAME and DB_USERNAME:
             'PORT': DB_PORT,
         },
     }
+    # postgres://projeto_integrador2:6V6B8vqi97Yl4SNZwnwNDfrwsXQRPPJ3@dpg-ckrf4662eoec73feg88g-a/projeto_integrador2
 else:
     DATABASES = {
         'default': {
