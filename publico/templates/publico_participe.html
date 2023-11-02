@@ -1,0 +1,22 @@
+{% extends "layouts/base-publico.html" %}
+{% load i18n static admin_soft %}
+{% block content %}
+    <main class="main-content">
+        <section>
+            <div class="container mt-4">
+                <h1>Participe</h1>
+                <p>
+                    Para contribuir com o projeto, você pode solicitar o saco verde no formulário abaixo. (È necessário ser morador de Macatuba-SP)                    
+                </p>
+
+                <p>
+                    Nosso pessoal vai deixar um saco verde na sua casa, e você pode colocar os recicláveis nele. Uma vez por semana nosso caminhão passa recolhendo. Confira a agenda dos bairros <a href="{% url 'agenda' %}">aqui</a>.
+                </p>
+
+                <p>Formulario</p>
+                
+            </div>
+        </section>
+    </main>
+    {% include "includes/footer-fullscreen.html" %}
+{% endblock content %}
