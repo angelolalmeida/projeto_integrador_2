@@ -1,0 +1,142 @@
+{% extends "layouts/base-publico.html" %}
+{% load i18n static admin_soft %}
+{% block content %}
+    <main class="main-content">
+        <section>
+            <div class="container mt-4">
+                <h1>Consulte sua reclamação</h1>
+                <p>Digite o seu CPF para consultar suas reclamações.</p>
+                <div class="container-fluid">
+                    <div id="loading" class="loader mx-auto"></div>
+                </div>
+                <form method="get" class="d-flex align-items-center justify-content-center" action="" style="display: flex; ">
+                    <input type="text"
+                    class="m-2"
+                           name="cpf"
+                           placeholder="Buscar por CPF(Apenas números)"
+                           pattern="\d{11}"
+                           title="Por favor, insira um CPF válido com 11 dígitos(Apenas números)."
+                           style="width: 250px; margin-bottom: 10px">
+                    <input type="submit" value="Buscar" class="btn btn-primary m-2">
+                </form>
+                {% if reclamacoes %}
+                    {% for reclamacao in reclamacoes %}
+                        <div class="card mb-3 mt-2"
+                             style="{% if reclamacao.status == 'resolvido' %}background-color: lightgreen;
+                                    {% endif %}">
+                            <div class="card-header">
+                                {{ reclamacao.get_tipo_reclamacao_display }}
+                                <br>
+                                {{ reclamacao.observacao }}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Status: {{ reclamacao.status }}</h5>
+                                <p class="card-text">Resposta: {{ reclamacao.historico }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="pagination d-flex align-items-center justify-content-center">
+                    {% if reclamacoes.has_previous %}
+                        <a class="btn btn-default m-2" href="?cpf={{ request.GET.cpf }}&page=1">Primeira</a>
+                        <a class="btn btn-default m-2"
+                           href="?cpf={{ request.GET.cpf }}&page={{ reclamacoes.previous_page_number }}">Anterior</a>
+                    {% endif %}
+                    <span class="current-page">Página {{ reclamacoes.number }} de {{ reclamacoes.paginator.num_pages }}</span>
+                    {% if reclamacoes.has_next %}
+                        <a class="btn btn-default m-2"
+                           href="?cpf={{ request.GET.cpf }}&page={{ reclamacoes.next_page_number }}">Próxima</a>
+                        <a class="btn btn-default m-2"
+                           href="?cpf={{ request.GET.cpf }}&page={{ reclamacoes.paginator.num_pages }}">Última</a>
+                    {% endif %}
+                
+            </div>
+        </section>
+    </main>
+    {% include "includes/footer-fullscreen.html" %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function() {   
+            
+            get_bairros();
+        });
+
+        $(document).ready(function() {   
+    
+            // Formata o telefone
+            $(document).ready(function(){
+                $('#id_whatsapp').mask('(00)00000-0000');
+               });
+        
+            // Atualiza o endereço na tela
+            $('#id_cep').change(function() {
+                var cep = $(this).val();
+                $.ajax({
+                    url: 'https://viacep.com.br/ws/'+ cep +'/json/',
+                    dataType: 'json',
+                    beforeSend: function(){
+                        $('#loading').show();
+                    },
+                    success: function(response) {
+        
+                        dados = {
+                            'cep': cep,
+                            // pega o valor do campo bairro no respose
+                            'bairro': response.bairro,
+                            'logradouro': response.logradouro,
+                        }                        
+        
+                        // só busca o bairro se o usuario digitou um cep valido 
+                        if (response.erro) {
+                            alert('CEP inválido');
+                            $('#id_cep').val('');
+                            $('#id_endereco').val('');
+                            $('#id_cep').focus();
+                            return false;
+                        }
+        
+                        get_bairros(dados);
+        
+                        $('#id_endereco').val(response.logradouro);
+                        
+                       
+                        if(response.logradouro !== '' && response.logradouro !== null) {
+                          $('#id_endereco').prop('readonly', true);                         
+                        }
+                       
+                    },
+                    complete: function(){
+                        // delay de 1 segundo
+                        setTimeout(function() {
+                            $('#loading').hide();
+                        }, 1000);
+                        $('#loading').hide(); // Esconde o snippet de carregamento
+                    }
+                });
+            });
+        });
+
+        function get_bairros(dados) {
+            $.ajax({
+                url: "{%url 'get_bairro'%}", // URL da view Django
+                dataType: 'json',
+                data: dados,
+                success: function(response) {
+                    if(response.bairros) {
+                        var select = $('#id_bairro');
+                        select.empty(); // Limpa o select                        
+                        $.each(response.bairros, function(index, bairro) {
+                            select.append($('<option>', { 
+                                value: bairro[0],
+                                text : bairro[1]
+                            }));
+                        });
+                    } 
+                    $('#id_bairro').val(response.bairro);
+                }
+            });
+        }
+
+    </script>
+{% endblock content %}

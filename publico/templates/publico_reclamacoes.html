@@ -1,0 +1,119 @@
+{% extends "layouts/base-publico.html" %}
+{% load i18n static admin_soft %}
+{% block content %}
+    <main class="main-content">
+        <section>
+            <div class="container mt-4">
+                <h1>Reclamação</h1>
+                <p>
+                    Caso tenha tido algum problema com a coleta, por favor, nos informe para que possamos melhorar nosso serviço.
+                </p>
+                            
+                <div class="container-fluid">
+                    <div id="loading" class="loader mx-auto"></div>
+                </div>
+                <form method="post" action="" class="form-group mt-3">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="row mt-3">
+                        <div class="col-6 ">
+                            <a class="btn btn-outline-secondary text-decoration-none"
+                               href="{% url 'index' %}">Cancelar</a>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    {% include "includes/footer-fullscreen.html" %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function() {   
+            
+            get_bairros();
+        });
+
+        $(document).ready(function() {   
+    
+            // Formata o telefone
+            $(document).ready(function(){
+                $('#id_whatsapp').mask('(00)00000-0000');
+               });
+        
+            // Atualiza o endereço na tela
+            $('#id_cep').change(function() {
+                var cep = $(this).val();
+                $.ajax({
+                    url: 'https://viacep.com.br/ws/'+ cep +'/json/',
+                    dataType: 'json',
+                    beforeSend: function(){
+                        $('#loading').show();
+                    },
+                    success: function(response) {
+        
+                        dados = {
+                            'cep': cep,
+                            // pega o valor do campo bairro no respose
+                            'bairro': response.bairro,
+                            'logradouro': response.logradouro,
+                        }                        
+        
+                        // só busca o bairro se o usuario digitou um cep valido 
+                        if (response.erro) {
+                            alert('CEP inválido');
+                            $('#id_cep').val('');
+                            $('#id_endereco').val('');
+                            $('#id_cep').focus();
+                            return false;
+                        }
+        
+                        get_bairros(dados);
+        
+                        $('#id_endereco').val(response.logradouro);
+                        
+                       
+                        if(response.logradouro !== '' && response.logradouro !== null) {
+                          $('#id_endereco').prop('readonly', true);                         
+                        }
+                       
+                    },
+                    complete: function(){
+                        // delay de 1 segundo
+                        setTimeout(function() {
+                            $('#loading').hide();
+                        }, 1000);
+                        $('#loading').hide(); // Esconde o snippet de carregamento
+                    }
+                });
+            });
+        });
+
+        function get_bairros(dados) {
+            $.ajax({
+                url: "{%url 'get_bairro'%}", // URL da view Django
+                dataType: 'json',
+                data: dados,
+                success: function(response) {
+                    if(response.bairros) {
+                        var select = $('#id_bairro');
+                        select.empty(); // Limpa o select                        
+                        $.each(response.bairros, function(index, bairro) {
+                            select.append($('<option>', { 
+                                value: bairro[0],
+                                text : bairro[1]
+                            }));
+                        });
+                    } 
+                    $('#id_bairro').val(response.bairro);
+                }
+            });
+        }
+
+</script>
+{% endblock content %}

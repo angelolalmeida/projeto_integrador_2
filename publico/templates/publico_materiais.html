@@ -2,8 +2,7 @@
 {% load i18n static admin_soft %}
 {% block content %}
     <main class="main-content">
-
-    <section>
+        <section>
             <div class="container mt-4">
                 <h1>Dicas Importantes</h1>
                 <div class="accordion m-2" id="accordionExample">
@@ -20,236 +19,155 @@
                                     Não envie para reciclagem <b>lixo de banheiro</b> e <b>restos de alimentos.</b>
                                 </p>
                                 <p>
-                                    Outros exemplos de <b>lixo comum</b> que não são recicláveis:<br>
-                                    <ul>
-                                        <li>Materiais de limpeza como panos, retalhos e esponjas</li>
-                                        <li>Bitucas de cigarro, fraudas descartáveis, papéis toalha usados, algodões, papéis sujos de comida</li>
-                                        <li>Pedras, cabos de vassoura, restos de móveis</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                                    Outros exemplos de <b>lixo comum</b> que não são recicláveis:
+                                    <br>
+                                    <br>
+                                    Materiais de limpeza como panos, retalhos e esponjas
+                                    <br>
+                                    Bitucas de cigarro, fraudas descartáveis, papéis toalha usados, algodões, papéis sujos de comida
+                                </br>
+                                <br>
+                                Pedras, cabos de vassoura, restos de móveis
+                            </br>
+                        </ul>
+                    </p>
                 </div>
-
-                <div class="accordion m-2" id="accordionExample">
-                    <div class="card bg-dicas">
-                        <div class="card-header bg-dicas" id="heading{{ regiao.id }}">
-                            <h2 class="mb-0 text-white">Dicas</h2>
-                        </div>
-                        <div id="collapse-01"
-                             class="collapse show"
-                             aria-labelledby="heading-01"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-
-                                <p class="text-white">
-
-                                    <ul class="text-white">
-                                        <li class="text-white">Lave as embalagens antes de colocar para reciclagem</li>
-                                        <li class="text-white">Deixe o saco verde próximo do seu saco de lixo normal para lembrar de separar os itens</li>
-                                        <li class="text-white">Ficou na dúvida se aquele produto ou embalagem será reaproveitada? Descarte sempre no reciclável!</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion m-2" id="accordionExample">
+        <div class="card bg-dicas">
+            <div class="card-header bg-dicas" id="heading{{ regiao.id }}">
+                <h2 class="mb-0 text-white">Dicas</h2>
+            </div>
+            <div id="collapse-01"
+                 class="collapse show"
+                 aria-labelledby="heading-01"
+                 data-parent="#accordionExample">
+                <div class="card-body">
+                    <p class="text-white">
+                        <ul class="text-white">
+                            <li class="text-white">Lave as embalagens antes de colocar para reciclagem</li>
+                            <li class="text-white">Deixe o saco verde próximo do seu saco de lixo normal para lembrar de separar os itens</li>
+                            <li class="text-white">
+                                Ficou na dúvida se aquele produto ou embalagem será reaproveitada? Descarte sempre no reciclável!
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section>
+    <div class="container-fluid mt-4">
+        <h1>Lista de materiais recicláveis que coletamos</h1>
+        <p>Nem tudo dá pra reciclar, mas a gente deixou uma lista de exemplos dos principais itens que coletamos.</p>
+        <div class="m-2">
+            <div class=" m-2">
+                <div class="card my-card">
+                    <div class="card-header">
+                        <h2 class="mb-0">Eletrônicos</h2>
+                        <p>
+                            Se vai na tomada ou tem pilha/bateria é um <b>lixo eletrônico</b> e nós pegamos.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Celulares e tablets e computadores</li>
+                            <li>TVs e monitores</li>
+                            <li>Eletrodomésticos como cafeteiras, liquidificadores, fornos micro-ondas</li>
+                            <li>CDs e DVDs, telefones, calculadoras, aparelhos de fax</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <div class="container mt-4">
-                <h1>Lista de materiais recicláveis que coletamos</h1>
-                <p>Nem tudo dá pra reciclar, mas a gente deixou uma lista de exemplos dos principais itens que coletamos.</p>
-                <div class="accordion m-2" id="accordionExample">
-
-                    <div class="accordion m-2" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="heading{{ regiao.id }}">
-                            <h2 class="mb-0">Eletrônicos</h2>
-                            <p>Se vai na tomada ou tem pilha/bateria é um <b>lixo eletrônico</b> e nós pegamos.</p>
-                        </div>
-                        <div id="collapse-01"
-                             class="collapse show"
-                             aria-labelledby="heading-01"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Celulares e tablets e computadores</td>
-                                        </tr>
-                                        <tr>
-                                            <td>TVs e monitores</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Eletrodomésticos como cafeteiras, liquidificadores, fornos micro-ondas</td>
-                                        </tr>
-                                        <tr>
-                                            <td>CDs e DVDs, telefones, calculadoras, aparelhos de fax</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <div class="my-card card">
+                <div class="card-header" id="heading{{ regiao.id }}">
+                    <h2 class="mb-0">Metais</h2>
+                </div>
+                <div id="collapse-01"
+                     class="collapse show"
+                     aria-labelledby="heading-01"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li>Ferragens</li>
+                            <li>Fios de cobre</li>
+                            <li>Latas de aerosol / desodorantes / outros</li>
+                            <li>Latas de azeite, óleo, sardinha</li>
+                            <li>Latas de alumínio, como de refrigerantes, cervejas, chás</li>
+                            <li>Panelas</li>
+                        </ul>
                     </div>
                 </div>
-
-                    <div class="card">
-                        <div class="card-header" id="heading{{ regiao.id }}">
-                            <h2 class="mb-0">Metais</h2>
-                        </div>
-                        <div id="collapse-01"
-                             class="collapse show"
-                             aria-labelledby="heading-01"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Ferragens</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fios de cobre</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Latas de aerosol / desodorantes / outros</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Latas de azeite, óleo, sardinha</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Latas de alumínio, como de refrigerantes, cervejas, chás</td>
-                                        </tr>
-                                    <tr>
-                                            <td>Panelas</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion m-2" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="heading{{ regiao.id }}">
-                            <h2 class="mb-0">Papéis e Papelão</h2>
-                        </div>
-                        <div id="collapse-01"
-                             class="collapse show"
-                             aria-labelledby="heading-01"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Embalagens e sacolas de papel</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Embalagem de ovo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Caixas de leite longa vida</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Caixas de papelão em geral</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cadernos, livros, revistas, folhas sulfite e papéis de escritório</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion m-2" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="heading{{ regiao.id }}">
-                            <h2 class="mb-0">Vidros</h2>
-                            <p>Importante: os vidros precisam estar embalados em papéis ou caixas para evitar acidentes.</p>
-                        </div>
-                        <div id="collapse-01"
-                             class="collapse show"
-                             aria-labelledby="heading-01"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Garrafas de bebidas em geral</td>
-                                        </tr>
-
-                                    <tr>
-                                            <td>Frascos de molhos, perfumes, condimentos</td>
-                                        </tr>
-
-                                    <tr>
-                                            <td>Copos de vidro</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion m-2" id="accordionExample">
-                    <div class="card">
-                        <div class="card-header" id="heading{{ regiao.id }}">
-                            <h2 class="mb-0">Plásticos</h2>
-                        </div>
-                        <div id="collapse-01"
-                             class="collapse show"
-                             aria-labelledby="heading-01"
-                             data-parent="#accordionExample">
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Embalagens e sacolas plásticas em geral</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Copos de plásticos e capsulas de café</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Embalagens marmitex de isopor (lavadas)</td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>Escovas de cabelo, brinquedos, utensílios de cozinha</td>
-                                        </tr>
-
-                                    <tr>
-                                            <td>Potes, tijelas, tampas e utensílios de plásticos em geral</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                
             </div>
-        </section>
-    </main>
-    {% include "includes/footer-fullscreen.html" %}
+        </div>
+        <div class="accordion m-2" id="accordionExample">
+            <div class="card my-card">
+                <div class="card-header" id="heading{{ regiao.id }}">
+                    <h2 class="mb-0">Papéis e Papelão</h2>
+                </div>
+                <div id="collapse-01"
+                     class="collapse show"
+                     aria-labelledby="heading-01"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li>Embalagens e sacolas de papel</li>
+                            <li>Embalagem de ovo</li>
+                            <li>Caixas de leite longa vida</li>
+                            <li>Caixas de papelão em geral</li>
+                            <li>Cadernos, livros, revistas, folhas sulfite e papéis de escritório</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion m-2" id="accordionExample">
+            <div class="my-card card">
+                <div class="card-header" id="heading{{ regiao.id }}">
+                    <h2 class="mb-0">Vidros</h2>
+                    <p>Importante: os vidros precisam estar embalados em papéis ou caixas para evitar acidentes.</p>
+                </div>
+                <div id="collapse-01"
+                     class="collapse show"
+                     aria-labelledby="heading-01"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li>Garrafas de bebidas em geral</li>
+                            <li>Frascos de molhos, perfumes, condimentos</li>
+                            <li>Copos de vidro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion m-2" id="accordionExample">
+            <div class="card my-card">
+                <div class="card-header" id="heading{{ regiao.id }}">
+                    <h2 class="mb-0">Plásticos</h2>
+                </div>
+                <div id="collapse-01"
+                     class="collapse show"
+                     aria-labelledby="heading-01"
+                     data-parent="#accordionExample">
+                    <div class="card-body">
+                        <ul>
+                            <li>Embalagens e sacolas plásticas em geral</li>
+                            <li>Copos de plásticos e capsulas de café</li>
+                            <li>Embalagens marmitex de isopor (lavadas)</li>
+                            <li>Escovas de cabelo, brinquedos, utensílios de cozinha</li>
+                            <li>Potes, tijelas, tampas e utensílios de plásticos em geral</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+{% include "includes/footer-fullscreen.html" %}
 {% endblock content %}

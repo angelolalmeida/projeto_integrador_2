@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import MoradoresForm
+from reclamacoes.forms import ReclamacoesForm
 from django.shortcuts import redirect
 from moradores.models import Bairro
 import requests
@@ -7,6 +8,8 @@ import json
 import pandas as pd
 import plotly.express as px
 from plotly.offline import plot
+from django.core.paginator import Paginator
+from reclamacoes.models import Reclamacoes
 
 
 # Função para criar um gráfico de barras otimizada
@@ -131,3 +134,60 @@ def reciclometro(request):
     }
 
     return render(request, 'publico_nossos_numeros.html', context=context)
+
+
+def reclamacao(request):
+    form = ReclamacoesForm(request.POST or None)
+
+    if form.is_valid():
+        reclamacao = form.save(commit=False)
+        cep = request.POST.get('cep')
+
+        link = f'https://viacep.com.br/ws/{cep}/json/'
+        requisicao = requests.get(link)
+
+        bairro = Bairro.objects.filter(cep='17250000').first()
+
+        try:
+            dic_requisicao = json.loads(requisicao.text)
+            if requisicao.status_code == 200 and 'erro' not in dic_requisicao:
+                bairro_nome = dic_requisicao.get('bairro')
+                logradouro = dic_requisicao.get('logradouro')
+
+                verifica_bairro = Bairro.objects.filter(cep=cep).first()
+
+                if verifica_bairro:
+                    bairro = verifica_bairro
+
+                else:
+                    bairro = Bairro(bairro=bairro_nome, cep=cep,
+                                    logradouro=logradouro)
+                    bairro.save()
+
+                reclamacao.bairro = bairro
+                reclamacao.rua = logradouro
+                reclamacao.save()
+                return redirect('reclamacao_consultar')
+            else:
+                form.add_error(
+                    'cep', "Não foi possível salvar a reclamação, CEP não encontrado.")
+        except json.JSONDecodeError:
+            form.add_error('cep', "O CEP fornecido não é válido.")
+
+    context = {'form': form}
+    return render(request, 'publico_reclamacoes.html', context)
+
+
+def reclamacoes_consultar(request):
+    query = request.GET.get('cpf')
+    if query:
+        reclamacoes_list = Reclamacoes.objects.filter(cpf__icontains=query)
+    else:
+        reclamacoes_list = Reclamacoes.objects.none()
+
+    paginator = Paginator(reclamacoes_list, 6)  # Show 8 reclamacoes per page.
+
+    page_number = request.GET.get('page')
+    reclamacoes = paginator.get_page(page_number)
+
+    return render(request, 'publico_reclamacoes_consultar.html', {'reclamacoes': reclamacoes})

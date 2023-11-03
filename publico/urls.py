@@ -10,4 +10,7 @@ urlpatterns = [
     path('participe', views.participe, name='participe'),
     path('participe/sucesso', views.participe_sucesso, name='participe_sucesso'),
     path('reciclometro', views.reciclometro, name='reciclometro'),
+    path('reclamacao', views.reclamacao, name='reclamacao'),
+    path('reclamacao/consultar', views.reclamacoes_consultar,
+         name='reclamacao_consultar'),
 ]
