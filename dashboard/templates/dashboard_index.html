@@ -1,11 +1,13 @@
-{% extends 'layouts/base.html' %}
+{% extends "layouts/base.html" %}
 {% load static %}
 
 {% block content %}
 
     <div class="container-fluid py-4">
      
-        <h1>Painel</h1>
+        <h1>Coleta Acumulada</h1>
+        <p class="text-sm">(Últimos 12 meses, por mês)</p>
+        <div id="grafico_coletas">{{ grafico_coletas|safe }}</div>
 
     </div>
 
@@ -13,6 +15,7 @@
 
 <!-- Specific JS goes HERE --> 
 {% block scripts %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   <script src="{% static 'js/plugins/chartjs.min.js' %}"></script>
   <script>

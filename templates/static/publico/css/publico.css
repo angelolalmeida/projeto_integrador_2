@@ -148,4 +148,11 @@
     padding-top: 0 !important;
 }
 
+@media (min-width: 992px) {
+    .card-horizontal .card-img {
+      max-height: 200px;
+      max-width: 200px;
+    }
+  }
+
 
