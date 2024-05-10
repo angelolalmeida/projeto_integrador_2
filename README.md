@@ -1,4 +1,4 @@
-# Project: Website for a Recyclers Association in Macatuba, SP - Brazil**
+# Project: Website for a Recyclers Association in Macatuba, SP - Brazil
 
 ## Description:
 
@@ -16,11 +16,11 @@ Front-end:
 
 *Soft UI:* An open-source design system built with Bootstrap 5 and Soft Dashboard, a pixel-perfect design from Creative-Tim. It offers a modern and intuitive user experience, with over 300 individual elements, such as buttons, inputs, navigation bars, navigation tabs, cards, and alerts, giving you the freedom to pick and choose to create custom interfaces. https://github.com/app-generator/django-admin-soft-dashboard
 
-# Data Visualization:
+## Data Visualization:
 
 *Plotly:* A JavaScript data visualization library for creating high-quality interactive charts and graphs. It offers a wide range of customization options and is compatible with multiple browsers and devices. https://plotly.com/python/
 
-# Data Analysis:
+## Data Analysis:
 
 *Pandas:* A Python library for data manipulation and analysis. It offers a powerful and easy-to-use data structure for working with tabular data and time series. https://pandas.pydata.org/docs/
 
