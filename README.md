@@ -6,7 +6,7 @@ This project was developed as a practical project for the "Projeto Integrador 3"
 
 ## Purpose:
 
-The purpose of this project is to create a website for a recyclers association in the city of Macatuba, SP - Brazil. The website will provide information about the association, its services, and how to get involved. It will also serve as a platform for the association to connect with the community and promote recycling awareness.
+The purpose of this project is to create a website for a recyclers association in the city of Macatuba, State of São Paulo - Brazil. The website will provide information about the association, its services, and how to get involved. It will also serve as a platform for the association to connect with the community and promote recycling awareness.
 
 ### Technologies:
 *Back-end:*
