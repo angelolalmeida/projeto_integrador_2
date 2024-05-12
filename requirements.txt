@@ -6,6 +6,7 @@ click==8.1.7
 click-plugins==1.1.1
 cligj==0.7.2
 colorama==0.4.6
+coverage==7.5.1
 cssbeautifier==1.14.9
 Django==4.2.7
 django-admin-soft-dashboard==1.0.12
@@ -13,6 +14,7 @@ django-cpf==0.1.0
 django-phonenumber-field==7.2.0
 djlint==1.32.1
 EditorConfig==0.12.3
+Faker==25.1.0
 fiona==1.9.6
 geopandas==0.11.1
 gunicorn==21.2.0
@@ -36,6 +38,7 @@ pytz==2023.3.post1
 PyYAML==6.0.1
 regex==2023.8.8
 requests==2.31.0
+responses==0.25.0
 sdist==0.0.0
 Shapely==1.8.2
 six==1.16.0
