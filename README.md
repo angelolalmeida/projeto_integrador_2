@@ -9,25 +9,25 @@ This project was developed as a practical project for the "Projeto Integrador 3"
 The purpose of this project is to create a website for a recyclers association in the city of Macatuba, State of São Paulo - Brazil. The website will provide information about the association, its services, and how to get involved. It will also serve as a platform for the association to connect with the community and promote recycling awareness.
 
 ### Technologies:
-*Back-end:*
 
-*Django:* A high-level Python web framework that facilitates rapid development and clean, pragmatic design. It takes care of much of the web development work, so you can focus on writing your application without having to reinvent the wheel. https://www.djangoproject.com/
+_Back-end:_
+
+_Django:_ A high-level Python web framework that facilitates rapid development and clean, pragmatic design. It takes care of much of the web development work, so you can focus on writing your application without having to reinvent the wheel. https://www.djangoproject.com/
 Front-end:
 
-*Soft UI:* An open-source design system built with Bootstrap 5 and Soft Dashboard, a pixel-perfect design from Creative-Tim. It offers a modern and intuitive user experience, with over 300 individual elements, such as buttons, inputs, navigation bars, navigation tabs, cards, and alerts, giving you the freedom to pick and choose to create custom interfaces. https://github.com/app-generator/django-admin-soft-dashboard
+_Soft UI:_ An open-source design system built with Bootstrap 5 and Soft Dashboard, a pixel-perfect design from Creative-Tim. It offers a modern and intuitive user experience, with over 300 individual elements, such as buttons, inputs, navigation bars, navigation tabs, cards, and alerts, giving you the freedom to pick and choose to create custom interfaces. https://github.com/app-generator/django-admin-soft-dashboard
 
 ## Data Visualization:
 
-*Plotly:* A JavaScript data visualization library for creating high-quality interactive charts and graphs. It offers a wide range of customization options and is compatible with multiple browsers and devices. https://plotly.com/python/
+_Plotly:_ A JavaScript data visualization library for creating high-quality interactive charts and graphs. It offers a wide range of customization options and is compatible with multiple browsers and devices. https://plotly.com/python/
 
 ## Data Analysis:
 
-*Pandas:* A Python library for data manipulation and analysis. It offers a powerful and easy-to-use data structure for working with tabular data and time series. https://pandas.pydata.org/docs/
-
+_Pandas:_ A Python library for data manipulation and analysis. It offers a powerful and easy-to-use data structure for working with tabular data and time series. https://pandas.pydata.org/docs/
 
 ## Quick start
 
-> 👉 Download the code  
+> 👉 Download the code
 
 ```bash
 $ git clone https://github.com/angelolalmeida/projeto_integrador_2.git
@@ -36,7 +36,7 @@ $ cd projeto_integrador_2
 
 <br />
 
-> 👉 Install modules via `VENV`  
+> 👉 Install modules via `VENV`
 
 ```bash
 $ python -m venv env
@@ -69,9 +69,44 @@ $ python manage.py createsuperuser
 $ python manage.py runserver
 ```
 
-At this point, the app runs at `http://127.0.0.1:8000/`. 
+At this point, the app runs at `http://127.0.0.1:8000/`.
 
 <br />
+
+## Testing
+
+### Utilities and Libraries
+
+- _Faker_ is a Python package that generates fake data for you.
+- _Responses_ is a utility library for mocking out the `requests` Python library.
+- _TestCase_ is the most common class to use for writing tests in Django.
+- _Coverage.py_ provides code coverage measurement for Python.
+
+### Available scripts
+
+> 👉 Running tests
+
+```bash
+$ python manage.py test
+```
+
+> 👉 Collecting coverage
+
+```bash
+$ coverage run manage.py test
+```
+
+> 👉 Show coverage report
+
+```bash
+$ coverage report
+```
+
+> 👉 Export coverage report to HTML
+
+```bash
+$ coverage html
+```
 
 ## Documentation
 
@@ -86,19 +121,19 @@ The project is coded using a simple and intuitive structure presented below:
 ```bash
 < PROJECT ROOT >
    |
-   |-- core/                            
-   |    |-- settings.py                  # Project Configuration  
+   |-- core/
+   |    |-- settings.py                  # Project Configuration
    |    |-- urls.py                      # Project Routing
    |
    |-- home/
-   |    |-- views.py                     # APP Views 
+   |    |-- views.py                     # APP Views
    |    |-- urls.py                      # APP Routing
-   |    |-- models.py                    # APP Models 
-   |    |-- tests.py                     # Tests  
-   |    |-- templates/                   # Theme Customisation 
-   |         |-- includes                # 
-   |              |-- custom-footer.py   # Custom Footer      
-   |     
+   |    |-- models.py                    # APP Models
+   |    |-- tests.py                     # Tests
+   |    |-- templates/                   # Theme Customisation
+   |         |-- includes                #
+   |              |-- custom-footer.py   # Custom Footer
+   |
    |-- requirements.txt                  # Project Dependencies
    |
    |-- env.sample                        # ENV Configuration (default values)
@@ -109,39 +144,39 @@ The project is coded using a simple and intuitive structure presented below:
 
 <br />
 
-## How to Customize 
+## How to Customize
 
-When a template file is loaded in the controller, `Django` scans all template directories starting from the ones defined by the user, and returns the first match or an error in case the template is not found. 
-The theme used to style this starter provides the following files: 
+When a template file is loaded in the controller, `Django` scans all template directories starting from the ones defined by the user, and returns the first match or an error in case the template is not found.
+The theme used to style this starter provides the following files:
 
 ```bash
 < LIBRARY_ROOT >                      # This exists in ENV: LIB/admin_soft
    |
-   |-- templates/                     # Root Templates Folder 
-   |    |          
-   |    |-- accounts/       
+   |-- templates/                     # Root Templates Folder
+   |    |
+   |    |-- accounts/
    |    |    |-- login.html           # Sign IN Page
    |    |    |-- register.html        # Sign UP Page
    |    |
-   |    |-- includes/       
+   |    |-- includes/
    |    |    |-- footer.html          # Footer component
    |    |    |-- sidebar.html         # Sidebar component
    |    |    |-- navigation.html      # Navigation Bar
    |    |    |-- scripts.html         # Scripts Component
    |    |
-   |    |-- layouts/       
+   |    |-- layouts/
    |    |    |-- base.html            # Masterpage
    |    |    |-- base-fullscreen.html # Masterpage for Auth Pages
    |    |
-   |    |-- pages/       
+   |    |-- pages/
    |         |-- index.html           # Dashboard page
    |         |-- profile.html         # Settings  Page
    |         |-- *.html               # All other pages
-   |    
+   |
    |-- ************************************************************************
 ```
 
-When the project requires customization, we need to copy the original file that needs an update (from the virtual environment) and place it in the template folder using the same path. 
+When the project requires customization, we need to copy the original file that needs an update (from the virtual environment) and place it in the template folder using the same path.
 
 > For instance, if we want to **customize the footer.html** these are the steps:
 
@@ -154,11 +189,11 @@ When the project requires customization, we need to copy the original file that 
 
 > To speed up all these steps, the **codebase is already configured** (`Steps 1, and 2`) and a `custom footer` can be found at this location:
 
-`home/templates/includes/custom_footer.html` 
+`home/templates/includes/custom_footer.html`
 
-By default, this file is unused because the `theme` expects `footer.html` (without the `custom_` prefix). 
+By default, this file is unused because the `theme` expects `footer.html` (without the `custom_` prefix).
 
-In order to use it, simply rename it to `footer.html`. Like this, the default version shipped in the library is ignored by Django. 
+In order to use it, simply rename it to `footer.html`. Like this, the default version shipped in the library is ignored by Django.
 
 In a similar way, all other files and components can be customized easily.
 
@@ -218,18 +253,18 @@ If you have questions or need help integrating the product please [contact us](h
 
 <br />
 
-## [PRO Version](https://www.creative-tim.com/product/soft-ui-dashboard-pro-django)   
+## [PRO Version](https://www.creative-tim.com/product/soft-ui-dashboard-pro-django)
 
 This design is a pixel-perfect [Bootstrap 5](https://www.admin-dashboards.com/bootstrap-5-templates/) Dashboard with a fresh, new design concept. `Soft UI Dashboard PRO` is built with over 300 frontend individual elements, like buttons, inputs, navbars, nav tabs, cards, or alerts, giving you the freedom of choosing and combining.
 
-> Features: 
+> Features:
 
 - `Up-to-date Dependencies`
 - `Design`: [Django Theme Soft PRO](https://github.com/app-generator/django-admin-soft-pro) - `PRO Version`
 - `Sections` covered by the design:
   - **Admin section** (reserved for superusers)
   - **Authentication**: `Django.contrib.AUTH`, Registration
-  - **All Pages** available in for ordinary users 
+  - **All Pages** available in for ordinary users
 - `Docker`, `Deployment`:
   - `CI/CD` flow via `Render`
 
@@ -240,4 +275,5 @@ This design is a pixel-perfect [Bootstrap 5](https://www.admin-dashboards.com/bo
 <br />
 
 ---
+
 [Soft UI Dashboard - Django Template](https://www.creative-tim.com/product/soft-ui-dashboard-django) - Provided by [Creative Tim](https://www.creative-tim.com/) and [AppSeed](https://appseed.us)
